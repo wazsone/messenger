@@ -1,13 +1,10 @@
 const express = require("express");
-const fs = require("fs");
+const path = require('path');
 
 const app = express();
 const PORT = 4000;
 
-app.get("/", (_req, res) => {
-    const page = fs.readFileSync("index.html", "utf8");
-    res.status(200).send(page);
-});
+app.get('/', (_req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 
 app.listen(PORT, function () {
     console.log(`Messenger is listening on port ${PORT}!`);
