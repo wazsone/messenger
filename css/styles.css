@@ -1,32 +1,33 @@
-html, body {
+html,
+body {
     padding: 0;
     margin: 0;
 }
-.signin-page {
+.base-page {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #5477a4;
     height: 100vh;
 }
-.signin-window {
+.form {
     display: flex;
     flex-direction: column;
     background-color: white;
     width: 350px;
     height: 300px;
 }
-.signin-content {
+.form-content {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-.label-page-name {
+.base-label {
     color: grey;
 }
-.label-logo {
+.form-logo-label {
     color: gray;
     float: left;
 }
@@ -36,15 +37,16 @@ html, body {
     color: gray;
     display: block;
 }
-.message-failed {
+.error-message-label {
+    font-size: small;
     color: red;
 }
-.signin-buttons {
+.form-content-clickable-items {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.button-confirm {
+.confirm-button {
     border: none;
     border-radius: 0;
     background-color: #2c3f5b;
@@ -54,12 +56,12 @@ html, body {
 .link {
     text-decoration: none;
 }
-.margin-8px{
+.margin-8px {
     margin: 8px;
 }
-.margin-bottom-8px{
+.margin-bottom-8px {
     margin-bottom: 8px;
 }
-.padding-8px{
+.padding-8px {
     padding: 8px;
 }
