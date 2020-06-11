@@ -15,8 +15,16 @@ body {
     flex-direction: column;
     background-color: white;
     width: 350px;
+}
+
+.sign-in-form {
     height: 300px;
 }
+
+.sign-up-form {
+    height: 400px;
+}
+
 .form-content {
     height: 100%;
     display: flex;
