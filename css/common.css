@@ -15,7 +15,6 @@ body {
     flex-direction: column;
     justify-content: center;
     background-color: white;
-
 }
 .form-content {
     height: 100%;
@@ -45,7 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 16px
+    margin-top: 16px;
 }
 .confirm-button {
     border: none;
@@ -75,4 +74,14 @@ body {
 }
 .hidden {
     visibility: hidden;
+}
+.circle {
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+.text-overflow-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
