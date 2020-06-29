@@ -17,7 +17,7 @@ app.get("/", (_, res) => {
 });
 
 app.get("/404", (_, res) => {
-    res.render("pages/error", {
+    res.render("error", {
         title: "404",
         errorCode: "404",
         errorMessage: "Wrong hit"
@@ -25,10 +25,32 @@ app.get("/404", (_, res) => {
 });
 
 app.get("/500", (_, res) => {
-    res.render("pages/error", {
+    res.render("error", {
         title: "500",
         errorCode: "500",
         errorMessage: "Wrong hit"
+    });
+});
+
+app.get("/sign-in", (_, res) => {
+    res.render("centered-form", {
+        title: "Sign In",
+        placeholders: ["Login", "Password"],
+        errorMessage: "Wrong login/password",
+        confirmBtnName: "Sign In",
+        linkTitle: "Don't have an account?",
+        link: ""
+    });
+});
+
+app.get("/sign-up", (_, res) => {
+    res.render("centered-form", {
+        title: "Sign Up",
+        placeholders: ["E-mail", "Login", "Password", "Password (again)"],
+        errorMessage: "Passwords are not equal",
+        confirmBtnName: "Sign Up",
+        linkTitle: "Sign In",
+        link: ""
     });
 });
 
