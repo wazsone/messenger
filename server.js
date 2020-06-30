@@ -7,84 +7,183 @@ app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
 app.set("views", "./views");
 app.set("view engine", "handlebars");
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, "/public")));
 app.get("/", (_, res) => {
     res.render("hello", {
         title: "Hello!",
         greeting: "Hello, my comrade!",
-        layout: "hello"
+        layout: "hello",
     });
 });
 
 app.get("/404", (_, res) => {
-    res.render("error", {
+    res.render("common/error", {
         title: "404",
         errorCode: "404",
-        errorMessage: "Wrong hit"
+        errorMessage: "Wrong hit",
     });
 });
 
 app.get("/500", (_, res) => {
-    res.render("error", {
+    res.render("common/error", {
         title: "500",
         errorCode: "500",
-        errorMessage: "Wrong hit"
+        errorMessage: "Wrong hit",
     });
 });
 
 app.get("/sign-in", (_, res) => {
-    res.render("centered-form", {
+    res.render("common/centered-form", {
         title: "Sign In",
         placeholders: ["Login", "Password"],
         errorMessage: "Wrong login/password",
         confirmBtnName: "Sign In",
         linkTitle: "Don't have an account?",
-        link: ""
+        link: "",
     });
 });
 
 app.get("/sign-up", (_, res) => {
-    res.render("centered-form", {
+    res.render("common/centered-form", {
         title: "Sign Up",
         placeholders: ["E-mail", "Login", "Password", "Password (again)"],
         errorMessage: "Passwords are not equal",
         confirmBtnName: "Sign Up",
         linkTitle: "Sign In",
-        link: ""
+        link: "",
     });
 });
 
 app.get("/user-settings", (_, res) => {
     res.render("user-settings", {
         title: "User settings",
-        inputs:[ 
+        inputs: [
             {
                 placeholder: "Full name",
-                errorMessage: "Illigal symbols"
+                errorMessage: "Illigal symbols",
             },
             {
                 placeholder: "Login",
-                errorMessage: "Illigal symbols"
+                errorMessage: "Illigal symbols",
             },
             {
                 placeholder: "E-mail",
-                errorMessage: "Wrong e-mail format"
+                errorMessage: "Wrong e-mail format",
             },
             {
                 placeholder: "Old password",
-                errorMessage: "Wrong password",            },
+                errorMessage: "Wrong password",
+            },
             {
                 placeholder: "New password",
                 errorMessage: "Hidden block",
-                className: "hidden"
+                className: "hidden",
             },
             {
                 placeholder: "New password (again)",
-                errorMessage: "Passwords are not equal"
+                errorMessage: "Passwords are not equal",
             },
-
         ],
-        confirmBtnName: "Change settings"
+        confirmBtnName: "Change settings",
+    });
+});
+
+app.get("/chat-list", (_, res) => {
+    res.render("chat-list", {
+        title: "Chat list",
+        logo: "Logo",
+        messages: [
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+            {
+                title: "Title",
+                author: "Username",
+                message:
+                    "Sooo long message, let's do it bro, let's write a long long message)",
+            },
+        ],
     });
 });
 

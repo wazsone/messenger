@@ -1,0 +1,29 @@
+<div class="chat-list">
+    <header class="chat-list-header">
+        <div class="padding-8px">{{{logo}}}</div>
+        <div class="padding-8px">Menu</div>
+    </header>
+    <main class="chat-list-body">
+        <div class="chat-list-body-preview">
+            <div class="chat-list-body-preview-search">
+                <input class="input padding-8px margin-8px" type="text" placeholder="Search" />
+            </div>
+            <ul class="chat-list-body-preview-list">
+                {{#each messages}}
+                <li class="chat-list-body-preview-item padding-8px">
+                    <img class="chat-list-body-preview-item-img circle" />
+                    <div class="chat-list-body-preview-item-msg">
+                        <span>{{{this.title}}}</span>
+                        <div class="text-overflow-ellipsis">
+                            {{{this.author}}}: {{{this.message}}}
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="chat-list-body-messages">
+            Choose or create a chat to start communication
+        </div>
+    </main>
+</div>
