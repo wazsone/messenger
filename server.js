@@ -1,13 +1,19 @@
-const express = require("express");
+import path from "path";
+import { handle404Error, handle500Error } from "./modules/pages/errors.js";
+import { handleSignIn, handleSignUp } from "./modules/pages/centeredForm.js";
+import { handleUserSettings } from "./modules/pages/userSettings.js";
+import { handleChatList } from "./modules/pages/chatList.js";
+import exphbs from "express-handlebars";
+import express from "express";
 const app = express();
-const expressHandlebars = require("express-handlebars");
-const path = require("path");
 
-app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("views", "./views");
 app.set("view engine", "handlebars");
 
+const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/public")));
+
 app.get("/", (_, res) => {
     res.render("hello", {
         title: "Hello!",
@@ -16,176 +22,17 @@ app.get("/", (_, res) => {
     });
 });
 
-app.get("/404", (_, res) => {
-    res.render("common/error", {
-        title: "404",
-        errorCode: "404",
-        errorMessage: "Wrong hit",
-    });
-});
+app.get("/404", handle404Error);
 
-app.get("/500", (_, res) => {
-    res.render("common/error", {
-        title: "500",
-        errorCode: "500",
-        errorMessage: "Wrong hit",
-    });
-});
+app.get("/500", handle500Error);
 
-app.get("/sign-in", (_, res) => {
-    res.render("common/centered-form", {
-        title: "Sign In",
-        placeholders: ["Login", "Password"],
-        errorMessage: "Wrong login/password",
-        confirmBtnName: "Sign In",
-        linkTitle: "Don't have an account?",
-        link: "",
-    });
-});
+app.get("/sign-in", handleSignIn);
 
-app.get("/sign-up", (_, res) => {
-    res.render("common/centered-form", {
-        title: "Sign Up",
-        placeholders: ["E-mail", "Login", "Password", "Password (again)"],
-        errorMessage: "Passwords are not equal",
-        confirmBtnName: "Sign Up",
-        linkTitle: "Sign In",
-        link: "",
-    });
-});
+app.get("/sign-up", handleSignUp);
 
-app.get("/user-settings", (_, res) => {
-    res.render("user-settings", {
-        title: "User settings",
-        inputs: [
-            {
-                placeholder: "Full name",
-                errorMessage: "Illigal symbols",
-            },
-            {
-                placeholder: "Login",
-                errorMessage: "Illigal symbols",
-            },
-            {
-                placeholder: "E-mail",
-                errorMessage: "Wrong e-mail format",
-            },
-            {
-                placeholder: "Old password",
-                errorMessage: "Wrong password",
-            },
-            {
-                placeholder: "New password",
-                errorMessage: "Hidden block",
-                className: "hidden",
-            },
-            {
-                placeholder: "New password (again)",
-                errorMessage: "Passwords are not equal",
-            },
-        ],
-        confirmBtnName: "Change settings",
-    });
-});
+app.get("/user-settings", handleUserSettings);
 
-app.get("/chat-list", (_, res) => {
-    res.render("chat-list", {
-        title: "Chat list",
-        logo: "Logo",
-        messages: [
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-            {
-                title: "Title",
-                author: "Username",
-                message:
-                    "Sooo long message, let's do it bro, let's write a long long message)",
-            },
-        ],
-    });
-});
+app.get("/chat-list", handleChatList);
 
 const PORT = 4000;
 app.listen(PORT, function () {
