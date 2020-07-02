@@ -90,3 +90,6 @@ ul {
     overflow: hidden;
     white-space: nowrap;
 }
+.flex {
+    display: flex;
+}

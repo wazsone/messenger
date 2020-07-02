@@ -9,7 +9,7 @@
                 <input class="input padding-8px margin-8px" type="text" placeholder="Search" />
             </div>
             <ul class="chat-list-body-preview-list">
-                {{#each messages}}
+                {{#each previews}}
                 <li class="chat-list-body-preview-item padding-8px">
                     <img class="chat-list-body-preview-item-img circle" />
                     <div class="chat-list-body-preview-item-msg">
@@ -23,7 +23,10 @@
             </ul>
         </div>
         <div class="chat-list-body-messages">
-            Choose or create a chat to start communication
+            <div class="chat-list-body-messages-container">
+                {{!-- Choose or create a chat to start communication --}}
+                {{> messages messages=messages}}
+            </div>
         </div>
     </main>
 </div>
