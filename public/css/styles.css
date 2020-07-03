@@ -118,6 +118,7 @@
     color: #808ac2;
 }
 .message-container {
+    display: flex;
     height: 55px;
 }
 .message-container-author-date-text {
@@ -138,3 +139,39 @@
 .message-text {
     white-space: pre-wrap;
 }
+
+.chat-list-body-input {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    align-self: center;
+    margin: 8px;
+}
+
+.chat-list-body-input-container-img-form {
+    display: flex;
+    height: 55px;
+}
+
+.chat-list-body-input-form {
+    height: 40px;
+    width: 100%;
+    border-color: darkgray;
+    background-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.chat-list-body-input-form:focus {
+    outline: none;
+}
+
+.chat-list-body-input-send-buttom {
+    float: right;
+    font-weight: bolder;
+    color: lightskyblue;
+    border: none;
+    background: none;
+    align-self: flex-end;
+}
+

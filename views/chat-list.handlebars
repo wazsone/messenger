@@ -9,24 +9,24 @@
                 <input class="input padding-8px margin-8px" type="text" placeholder="Search" />
             </div>
             <ul class="chat-list-body-preview-list">
-                {{#each previews}}
-                <li class="chat-list-body-preview-item padding-8px">
-                    <img class="chat-list-body-preview-item-img circle" />
-                    <div class="chat-list-body-preview-item-msg">
-                        <span>{{{this.title}}}</span>
-                        <div class="text-overflow-ellipsis">
-                            {{{this.author}}}: {{{this.message}}}
-                        </div>
-                    </div>
-                </li>
-                {{/each}}
+                {{> previews previews=previews}}
             </ul>
         </div>
         <div class="chat-list-body-messages">
-            <div class="chat-list-body-messages-container">
-                {{!-- Choose or create a chat to start communication --}}
-                {{> messages messages=messages}}
+            <div class="chat-list-body-input">
+                <div class="chat-list-body-input-container-img-form">
+                    <img class="chat-list-body-preview-item-img circle" />
+                    <textarea class="chat-list-body-input-form" autoFocus spellCheck
+                        placeholder="Please write a message..." {{!-- onChange={this.onChange}
+                        onKeyDown={this.handleKeyDown}
+                        value={userMessage} --}}></textarea>
+                </div>
+                <button class="chat-list-body-input-send-buttom" {{!-- disabled={userMessage.length === 0}
+                    onClick={this.onSend} --}}>SEND</button>
             </div>
+            <ul class="chat-list-body-messages-container">
+                {{> messages messages=messages}}
+            </ul>
         </div>
     </main>
 </div>
