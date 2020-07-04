@@ -1,3 +1,4 @@
+"use strict";
 import path from "path";
 import { handle404Error, handle500Error } from "./modules/pages/errors.js";
 import { handleSignIn, handleSignUp } from "./modules/pages/centeredForm.js";

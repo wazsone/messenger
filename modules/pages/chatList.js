@@ -1,3 +1,4 @@
+"use strict";
 export function handleChatList(_, res) {
     res.render("chat-list", {
         title: "Chat list",

@@ -1,3 +1,4 @@
+"use strict";
 export function handleUserSettings(_, res) {
     res.render("user-settings", {
         title: "User settings",

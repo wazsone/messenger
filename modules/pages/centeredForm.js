@@ -1,3 +1,4 @@
+"use strict";
 export function handleSignIn(_, res) {
     res.render("common/centered-form", {
         title: "Sign In",

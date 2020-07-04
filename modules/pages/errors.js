@@ -1,3 +1,4 @@
+"use strict";
 export function handle404Error(_, res) {
     res.render("common/error", {
         title: "404",
