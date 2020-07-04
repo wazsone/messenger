@@ -2,7 +2,7 @@
 export function handleChatList(_, res) {
     res.render("chat-list", {
         title: "Chat list",
-        scripts: ["/js/validationChatList.js"],
+        scripts: ["/js/validationChatList.mjs"],
         logo: "Logo",
         previews: [
             {

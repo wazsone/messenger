@@ -1,9 +1,9 @@
 "use strict";
 import path from "path";
-import { handle404Error, handle500Error } from "./modules/pages/errors.js";
-import { handleSignIn, handleSignUp } from "./modules/pages/centeredForm.js";
-import { handleUserSettings } from "./modules/pages/userSettings.js";
-import { handleChatList } from "./modules/pages/chatList.js";
+import { handle404Error, handle500Error } from "./modules/pages/errors.mjs";
+import { handleSignIn, handleSignUp } from "./modules/pages/centeredForm.mjs";
+import { handleUserSettings } from "./modules/pages/userSettings.mjs";
+import { handleChatList } from "./modules/pages/chatList.mjs";
 import exphbs from "express-handlebars";
 import express from "express";
 const app = express();

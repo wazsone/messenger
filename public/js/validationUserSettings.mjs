@@ -1,6 +1,6 @@
 "use strict";
 
-import ArrayUtils from "./utils/arrayUtils.js";
+import ArrayUtils from "./utils/arrayUtils.mjs";
 
 const inputs = document.getElementsByClassName("input");
 

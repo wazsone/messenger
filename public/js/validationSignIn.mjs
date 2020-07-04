@@ -1,6 +1,6 @@
 "use strict";
 
-import { registeredUsers } from "./testData.js";
+import { registeredUsers } from "./testData.mjs";
 
 const inputs = document.getElementsByClassName("input");
 

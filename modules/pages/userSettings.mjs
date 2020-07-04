@@ -2,7 +2,7 @@
 export function handleUserSettings(_, res) {
     res.render("user-settings", {
         title: "User settings",
-        scripts: ["/js/utils/arrayUtils.js", "/js/validationUserSettings.js"],
+        scripts: ["/js/utils/arrayUtils.mjs", "/js/validationUserSettings.mjs"],
         inputs: [
             {
                 name: "fullName",

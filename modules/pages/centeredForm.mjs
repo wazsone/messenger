@@ -2,7 +2,7 @@
 export function handleSignIn(_, res) {
     res.render("common/centered-form", {
         title: "Sign In",
-        scripts: ["/js/testData.js", "/js/validationSignIn.js"],
+        scripts: ["/js/testData.mjs", "/js/validationSignIn.mjs"],
         inputs: [
             { name: "login", placeholder: "Login" },
             { name: "password", placeholder: "Password" },
@@ -17,7 +17,7 @@ export function handleSignIn(_, res) {
 export function handleSignUp(_, res) {
     res.render("common/centered-form", {
         title: "Sign Up",
-        scripts: ["/js/testData.js", "/js/validationSignUp.js"],
+        scripts: ["/js/testData.mjs", "/js/validationSignUp.mjs"],
         inputs: [
             { name: "email", placeholder: "E-mail" },
             { name: "login", placeholder: "Login" },
