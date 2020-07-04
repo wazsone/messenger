@@ -47,4 +47,4 @@ https://dazzling-wiles-dc0478.netlify.app/
 
 #### Glitch.com
 
-https://glitch.com/~fourth-rich-pharaoh
+https://fourth-rich-pharaoh.glitch.me/
