@@ -17,12 +17,9 @@
                 <div class="chat-list-body-input-container-img-form">
                     <img class="chat-list-body-preview-item-img circle" />
                     <textarea class="chat-list-body-input-form" autoFocus spellCheck
-                        placeholder="Please write a message..." {{!-- onChange={this.onChange}
-                        onKeyDown={this.handleKeyDown}
-                        value={userMessage} --}}></textarea>
+                        placeholder="Please write a message..."></textarea>
                 </div>
-                <button class="chat-list-body-input-send-buttom" {{!-- disabled={userMessage.length === 0}
-                    onClick={this.onSend} --}}>SEND</button>
+                <button class="chat-list-body-input-send-buttom">SEND</button>
             </div>
             <ul class="chat-list-body-messages-container">
                 {{> messages messages=messages}}

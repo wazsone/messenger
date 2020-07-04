@@ -173,5 +173,9 @@
     border: none;
     background: none;
     align-self: flex-end;
+    border-radius: 0px;
 }
 
+.chat-list-body-input-send-buttom:focus {
+    outline: 2px solid lightskyblue;
+}
