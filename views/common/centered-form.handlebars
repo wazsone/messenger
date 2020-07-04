@@ -4,10 +4,10 @@
         <div class="form-content">
             <div class="base-label">{{{formLabel}}}</div>
             <div class="form-inputs">
-                {{#each placeholders}}
-                <input class="input padding-8px margin-bottom-8px" type="text" placeholder="{{this}}" />
+                {{#each inputs}}
+                <input name="{{this.name}}" class="input padding-8px margin-bottom-8px" type="text" placeholder="{{this.placeholder}}" />
                 {{/each}}
-                <div class="error-label">
+                <div class="hidden error-label">
                     {{{errorMessage}}}
                 </div>
             </div>
