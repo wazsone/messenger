@@ -1,4 +1,5 @@
 "use strict";
+
 import { registeredUsers } from "./testData.js";
 
 const inputs = document.getElementsByClassName("input");
@@ -29,7 +30,7 @@ function validate() {
 }
 
 function init() {
-    console.log("init()");
+    console.log("validationSignIn.init()");
 
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].onblur = function () {

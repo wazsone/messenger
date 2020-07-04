@@ -1,17 +1,34 @@
 "use strict";
 
+import ArrayUtils from "./utils/arrayUtils.js";
+
 const inputs = document.getElementsByClassName("input");
 
 function validate() {
     console.log("validate()");
     const userSettings = {
+        fullName: "",
         email: "",
         login: "",
-        password: "",
-        passwordAgain: "",
+        oldPassword: "",
+        newPassword: "",
+        newPasswordAgain: "",
     };
+    const errorLabels = document.getElementsByClassName(
+        "user-settings-error-label"
+    );
     for (let i = 0; i < inputs.length; i++) {
-        userSettings[inputs[i].getAttribute("name")] = inputs[i].value;
+        if (inputs[i].value.search(/<[^>]*script/i) < 0) {
+            userSettings[inputs[i].getAttribute("name")] = inputs[i].value;
+            if (!errorLabels[i].classList.contains("hidden")) {
+                errorLabels[i].classList.add("hidden");
+            }
+        } else {
+            userSettings[inputs[i].getAttribute("name")] = "";
+            if (errorLabels[i].classList.contains("hidden")) {
+                errorLabels[i].classList.remove("hidden");
+            }
+        }
     }
     console.log("validate.userSettings:");
     console.log(userSettings);
@@ -23,24 +40,24 @@ function validate() {
         }
     }
 
-    const errorLabel = document.getElementsByClassName("error-label")[0];
+    const passwordErrorLabel = ArrayUtils.last(errorLabels);
     if (
         !hasEmptyInput &&
-        userSettings.password === userSettings.passwordAgain
+        userSettings.newPassword === userSettings.newPasswordAgain
     ) {
         console.log("validate, Success!");
-        if (!errorLabel.classList.contains("hidden")) {
-            errorLabel.classList.add("hidden");
+        if (!passwordErrorLabel.classList.contains("hidden")) {
+            passwordErrorLabel.classList.add("hidden");
         }
         return;
     }
 
     console.log("validate, Failed!");
-    errorLabel.classList.remove("hidden");
+    passwordErrorLabel.classList.remove("hidden");
 }
 
 function init() {
-    console.log("validationSignUp.init()");
+    console.log("validationUserSettings.init()");
 
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].onblur = function () {

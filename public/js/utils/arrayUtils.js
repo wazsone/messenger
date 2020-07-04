@@ -1,6 +1,6 @@
 const ArrayUtils = {
     last: function(list) {
-        if (!Array.isArray(list) || list.length === 0) {
+        if (!list || list.length === 0) {
             return undefined;
         }
     
@@ -8,7 +8,7 @@ const ArrayUtils = {
     },
     
     first: function(list) {
-        if (!Array.isArray(list) || list.length === 0) {
+        if (!list || list.length === 0) {
             return undefined;
         }
     
