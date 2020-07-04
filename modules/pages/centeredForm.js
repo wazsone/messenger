@@ -17,6 +17,7 @@ export function handleSignIn(_, res) {
 export function handleSignUp(_, res) {
     res.render("common/centered-form", {
         title: "Sign Up",
+        scripts: ["/js/testData.js", "/js/validationSignUp.js"],
         inputs: [
             { name: "email", placeholder: "E-mail" },
             { name: "login", placeholder: "Login" },
