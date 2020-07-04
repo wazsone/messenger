@@ -2,7 +2,7 @@
 export function handleSignIn(_, res) {
     res.render("common/centered-form", {
         title: "Sign In",
-        placeholders: ["Login", "Password"],
+        scripts: ["/js/testData.js", "/js/validationSignIn.js"],
         inputs: [
             { name: "login", placeholder: "Login" },
             { name: "password", placeholder: "Password" },

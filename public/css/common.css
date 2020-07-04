@@ -96,3 +96,7 @@ ul {
     overflow: hidden;
     white-space: nowrap;
 }
+.invalid {
+    border: solid red;
+    border-width: 1px;
+}
