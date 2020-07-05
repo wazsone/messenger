@@ -6,52 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../css/common.css" type="text/css" />
         <link rel="stylesheet" href="../css/styles.css" type="text/css" />
+        <script src="https://s3.amazonaws.com/builds.handlebarsjs.com/handlebars.min-v4.7.6.js"></script>
+        <script src="../js/confirmButton.js"></script>
+        <script src="../js/centeredForm.js"></script>
     </head>
     <body>
-        <div class="base-page">
-            <div class="form sign-up-form">
-                <div class="base-label form-logo-label margin-8px">Logo</div>
-                <div class="form-content">
-                    <div class="base-label">Sign up</div>
-                    <div class="form-inputs">
-                        <input
-                            class="input padding-8px margin-bottom-8px"
-                            type="text"
-                            placeholder="E-mail"
-                        />
-                        <input
-                            class="input padding-8px margin-bottom-8px"
-                            type="text"
-                            placeholder="Login"
-                        />
-                        <input
-                            class="input padding-8px margin-bottom-8px"
-                            type="text"
-                            placeholder="Password"
-                        />
-                        <input
-                            class="input padding-8px margin-bottom-8px"
-                            type="text"
-                            placeholder="Password (again)"
-                        />
-                        <div class="error-label">
-                            Passwords are not equal
-                        </div>
-                    </div>
-                    <div class="form-content-clickable-items">
-                        <div>
-                            <button
-                                class="confirm-button padding-8px margin-bottom-8px"
-                            >
-                                Sign Up
-                            </button>
-                        </div>
-                        <div class="margin-bottom-8px">
-                            <a class="link" href="">Sign In</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <script>
+            const template = Handlebars.compile(getTemplate(getConfirmButtonTemplate()));
+            document.getElementsByTagName("body")[0].innerHTML = template(getSignUpData());
+        </script>
+        <script type="module" src="../js/validation/signUp.mjs"></script>
     </body>
 </html>

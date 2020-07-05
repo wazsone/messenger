@@ -6,99 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../css/common.css" type="text/css" />
         <link rel="stylesheet" href="../css/styles.css" type="text/css" />
+        <script src="https://s3.amazonaws.com/builds.handlebarsjs.com/handlebars.min-v4.7.6.js"></script>
+        <script src="../js/confirmButton.js"></script>
+        <script src="../js/userSettings.js"></script>
     </head>
     <body>
-        <div class="form">
-            <h3 class="title">User settings</h3>
-            <div class="user-settings-form-content">
-                <div class="user-settings-form-content-item">
-                    <img class="user-settings-avatar-img circle" />
-                    <a class="link user-settings-avatar-change-button" href=""
-                        >Change avatar</a
-                    >
-                </div>
-                <ul class="user-settings-form-content-item margin-bottom-8px">
-                    <li>
-                        <input
-                            class="input padding-8px margin-bottom-4px"
-                            type="text"
-                            placeholder="Full name"
-                        />
-                        <div
-                            class="user-settings-error-label margin-bottom-4px"
-                        >
-                            Illigal symbols
-                        </div>
-                    </li>
-                    <li>
-                        <input
-                            class="input padding-8px margin-bottom-4px"
-                            type="text"
-                            placeholder="Login"
-                        />
-                        <div
-                            class="user-settings-error-label margin-bottom-4px"
-                        >
-                            Illigal symbols
-                        </div>
-                    </li>
-                    <li>
-                        <input
-                            class="input padding-8px margin-bottom-4px"
-                            type="text"
-                            placeholder="E-mail"
-                        />
-                        <div
-                            class="user-settings-error-label margin-bottom-4px"
-                        >
-                            Wrong e-mail format
-                        </div>
-                    </li>
-                    <li>
-                        <input
-                            class="input padding-8px margin-bottom-4px"
-                            type="text"
-                            placeholder="Old password"
-                        />
-                        <div
-                            class="user-settings-error-label margin-bottom-4px"
-                        >
-                            Wrong password
-                        </div>
-                    </li>
-                    <li>
-                        <input
-                            class="input padding-8px margin-bottom-4px"
-                            type="text"
-                            placeholder="New password"
-                        />
-                        <div
-                            class="hidden user-settings-error-label margin-bottom-4px"
-                        >
-                            Hidden block
-                        </div>
-                    </li>
-                    <li>
-                        <input
-                            class="input padding-8px margin-bottom-4px"
-                            type="text"
-                            placeholder="New password (again)"
-                        />
-                        <div
-                            class="user-settings-error-label margin-bottom-4px"
-                        >
-                            Passwords are not equal
-                        </div>
-                    </li>
-                    <li class="form-content-clickable-items">
-                        <div>
-                            <button class="confirm-button padding-8px">
-                                Change settings
-                            </button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <script>
+            const template = Handlebars.compile(getTemplate(getConfirmButtonTemplate()));
+            document.getElementsByTagName("body")[0].innerHTML = template(getData());
+        </script>
+        <script type="module" src="../js/validation/userSettings.mjs"></script>
     </body>
 </html>

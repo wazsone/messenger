@@ -6,16 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../css/common.css" type="text/css" />
         <link rel="stylesheet" href="../css/styles.css" type="text/css" />
+        <script src="https://s3.amazonaws.com/builds.handlebarsjs.com/handlebars.min-v4.7.6.js"></script>
+        <script src="../js/errors.js"></script>
     </head>
     <body>
-        <div class="base-page">
-            <div class="form status-code-form">
-                <div class="status-code-form-container">
-                    <div class="status-code-form-text">404</div>
-                    <div class="status-code-form-text">Wrong hit</div>
-                </div>
-                <a class="status-code-form-link" href="">Return to chats</a>
-            </div>
-        </div>
+        <script>
+            const template = Handlebars.compile(getTemplate());
+            document.getElementsByTagName("body")[0].innerHTML = template(getData("404"));
+        </script>
     </body>
 </html>

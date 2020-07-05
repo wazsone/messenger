@@ -1,202 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Chats list</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../css/common.css" type="text/css" />
         <link rel="stylesheet" href="../css/styles.css" type="text/css" />
-        <title>Chats list</title>
+        <script src="https://s3.amazonaws.com/builds.handlebarsjs.com/handlebars.min-v4.7.6.js"></script>
+        <script src="../js/previews.js"></script>
+        <script src="../js/messages.js"></script>
+        <script src="../js/chatList.js"></script>
     </head>
     <body>
-        <div class="chat-list">
-            <header class="chat-list-header">
-                <div class="padding-8px">Logo</div>
-                <div class="padding-8px">Menu</div>
-            </header>
-            <main class="chat-list-body">
-                <div class="chat-list-body-preview">
-                    <div class="chat-list-body-preview-search">
-                        <input
-                            class="input padding-8px margin-8px"
-                            type="text"
-                            placeholder="Search"
-                        />
-                    </div>
-                    <ul class="chat-list-body-preview-list">
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                        <li class="chat-list-body-preview-item padding-8px">
-                            <img
-                                class="chat-list-body-preview-item-img circle"
-                            />
-                            <div class="chat-list-body-preview-item-msg">
-                                <span>Title</span>
-                                <div class="text-overflow-ellipsis">
-                                    Who: so long message, let's do it bro, let's
-                                    write a long long message)
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="chat-list-body-messages">
-                    Choose or create a chat to start communication
-                </div>
-            </main>
-        </div>
+        <script>
+            const previews = getPreviewsTemplate();
+            const messages = getMessagesTemplate();
+            const template = Handlebars.compile(getTemplate(previews, messages));
+            document.getElementsByTagName("body")[0].innerHTML = template(getData());
+        </script>
+        <script type="module" src="../js/validation/chatList.mjs"></script>
     </body>
 </html>

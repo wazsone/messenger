@@ -41,6 +41,12 @@ ul {
     color: gray;
     display: block;
 }
+.input:focus {
+    outline: none;
+    outline-offset: 0px;
+    border: solid darkgrey;
+    border-width: 1px;
+}
 .error-label {
     font-size: small;
     color: red;
@@ -89,4 +95,8 @@ ul {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+.invalid {
+    border: solid red;
+    border-width: 1px;
 }
