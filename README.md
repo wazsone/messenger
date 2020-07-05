@@ -23,11 +23,6 @@
  - списка чатов,
  - настроек пользователя
 
-#### Netlify
-
-https://dazzling-wiles-dc0478.netlify.app/
-
-
 ### Модуль 1. Спринт 2
 
 Проектная работа
@@ -45,6 +40,16 @@ https://dazzling-wiles-dc0478.netlify.app/
      - Сделать отдельный шаблон для кнопки
      - Использовать кнопку во всех страницах, где она нужна как модуль
 
+#### Netlify
+
+https://dazzling-wiles-dc0478.netlify.app/
+
 #### Glitch.com
 
 https://fourth-rich-pharaoh.glitch.me/
+
+#### Node
+
+Запустить только статику: ```npm run start```
+
+Запустить с использованием Express: ```npm run startPublic```
