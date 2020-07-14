@@ -2,10 +2,9 @@
     "name": "messenger",
     "version": "1.0.0",
     "description": "",
-    "main": "staticServer.mjs",
+    "main": "server.mjs",
     "scripts": {
-        "start": "node --experimental-modules staticServer.mjs",
-        "startPublic": "node --experimental-modules publicServer.mjs",
+        "start": "node --experimental-modules server.mjs",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
