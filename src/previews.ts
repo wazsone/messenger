@@ -1,4 +1,4 @@
-function getPreviewsTemplate() {
+export function getPreviewsTemplate() {
     return `{{#each previews}}
     <li class="chat-list-body-preview-item padding-8px">
         <img class="chat-list-body-preview-item-img circle" />

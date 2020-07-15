@@ -1,6 +1,11 @@
 "use strict";
 
-function getSignInData() {
+export interface ISignInAttribute {
+    name: "string";
+    placeholder: "string";
+}
+
+export function getSignInData() {
     return {
         inputs: [
             { name: "login", placeholder: "Login" },
@@ -13,7 +18,7 @@ function getSignInData() {
     };
 }
 
-function getSignUpData() {
+export function getSignUpData() {
     return {
         inputs: [
             { name: "email", placeholder: "E-mail" },
@@ -29,7 +34,7 @@ function getSignUpData() {
     };
 }
 
-function getTemplate(confirmButtonTemplate) {
+export function getTemplate(confirmButtonTemplate: string) {
     return `<div class="base-page">
     <div class="form sign-in-form">
         <div class="base-label form-logo-label margin-8px">Logo</div>

@@ -1,17 +1,27 @@
 "use strict";
 
-const inputs = document.getElementsByClassName("input");
+const inputs = document.getElementsByClassName("input") as HTMLCollectionOf<HTMLInputElement>;
+
+export interface IUserSettings {
+    email: string,
+    login: string,
+    password: string,
+    passwordAgain: string,
+};
 
 function validate() {
     console.log("validate()");
-    const userSettings = {
+    const userSettings: IUserSettings = {
         email: "",
         login: "",
         password: "",
         passwordAgain: "",
     };
     for (let i = 0; i < inputs.length; i++) {
-        userSettings[inputs[i].getAttribute("name")] = inputs[i].value;
+        const attr = inputs[i].getAttribute("name");
+        if (attr && Object.keys(userSettings).includes(attr)) {
+            userSettings[attr] = inputs[i].value;
+        }
     }
     console.log("validate.userSettings:");
     console.log(userSettings);
@@ -23,7 +33,7 @@ function validate() {
         }
     }
 
-    const errorLabel = document.getElementsByClassName("error-label")[0];
+    const errorLabel = document.getElementsByClassName("error-label")[0] as HTMLLabelElement;
     if (
         !hasEmptyInput &&
         userSettings.password === userSettings.passwordAgain
@@ -43,16 +53,16 @@ function init() {
     console.log("validationSignUp.init()");
 
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].onblur = function () {
-            console.log(`${this.name}.onblur()`);
-            if (this.value === "") {
-                this.classList.add("invalid");
+        inputs[i].onblur = () => {
+            console.log(`${inputs[i].name}.onblur()`);
+            if (inputs[i].value === "") {
+                inputs[i].classList.add("invalid");
             }
         };
-        inputs[i].onfocus = function () {
-            console.log(`${this.name}.onfocus()`);
-            if (this.classList.contains("invalid")) {
-                this.classList.remove("invalid");
+        inputs[i].onfocus = () => {
+            console.log(`${inputs[i].name}.onfocus()`);
+            if (inputs[i].classList.contains("invalid")) {
+                inputs[i].classList.remove("invalid");
             }
         };
     }

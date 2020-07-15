@@ -1,6 +1,6 @@
 "use strict";
 
-function getData() {
+export function getData() {
     return {
         inputs: [
             {
@@ -38,7 +38,7 @@ function getData() {
     };
 }
 
-function getTemplate(confirmButtonTemplate) {
+export function getTemplate(confirmButtonTemplate: string) {
     return `<div class="form">
     <h3 class="title">User settings</h3>
     <div class="user-settings-form-content">

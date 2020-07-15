@@ -1,21 +1,19 @@
-const ArrayUtils = {
-    last: function(list) {
+export default class ArrayUtils {
+    static last<T>(list: T[]) {
         if (!list || list.length === 0) {
             return undefined;
         }
-    
+
         return list[list.length - 1];
-    },
-    
-    first: function(list) {
+    }
+    static first<T>(list: T[]) {
         if (!list || list.length === 0) {
             return undefined;
         }
-    
+
         return list[0];
-    },
-    
-    range: function(start, end, step, isRight) {
+    }
+    static range(start: number, end: number, step: number, isRight: boolean) {
         let startValue = 0;
         let endValue = 0;
         let count = start;
@@ -36,23 +34,21 @@ const ArrayUtils = {
                     ? Math.floor(endValue / stepValue)
                     : Math.abs(endValue) - startValue;
         }
-    
-        const result = [];
+
+        const result: number[] = [];
         let value = startValue;
         let i = 0;
         while (Math.abs(value) < Math.abs(endValue) && i++ < Math.abs(count)) {
             result.push(value);
             value += stepValue;
         }
-    
+
         return isRight ? result.reverse() : result;
-    },
-    
-    rangeRight: function(start, end, step) {
-        return range(start, end, step, true);
-    },
-    
-    isEmpty: function(value) {
+    }
+    static rangeRight(start: number, end: number, step: number) {
+        return ArrayUtils.range(start, end, step, true);
+    }
+    static isEmpty<T>(value: T) {
         if (value == null || value == undefined) {
             return true;
         }
@@ -65,5 +61,3 @@ const ArrayUtils = {
         return true;
     }
 }
-
-export default ArrayUtils;

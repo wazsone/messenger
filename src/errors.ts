@@ -1,6 +1,6 @@
 "use strict";
 
-function getData(statusCode) {
+export function getData(statusCode: string) {
     let errorMessage = "Something strange has happened ;)";
     if (statusCode === "404") {
         errorMessage = "Oops! Wrong hit";
@@ -14,7 +14,7 @@ function getData(statusCode) {
     };
 }
 
-function getTemplate() {
+export function getTemplate() {
     return `<div class="base-page">
     <div class="form status-code-form">
         <div class="status-code-form-container">

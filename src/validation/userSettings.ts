@@ -1,8 +1,8 @@
 "use strict";
 
-import ArrayUtils from "./utils/arrayUtils.mjs";
+import ArrayUtils from "./utils/arrayUtils.js";
 
-const inputs = document.getElementsByClassName("input");
+const inputs = document.getElementsByClassName("input") as HTMLCollectionOf<HTMLInputElement>;
 
 function validate() {
     console.log("validate()");
@@ -16,15 +16,20 @@ function validate() {
     };
     const errorLabels = document.getElementsByClassName(
         "user-settings-error-label"
-    );
+    ) as HTMLCollectionOf<HTMLLabelElement>;
     for (let i = 0; i < inputs.length; i++) {
+        const attr = inputs[i].getAttribute("name");
         if (inputs[i].value.search(/<[^>]*script/i) < 0) {
-            userSettings[inputs[i].getAttribute("name")] = inputs[i].value;
+            if (attr && Object.keys(userSettings).includes(attr)) {
+                userSettings[attr] = inputs[i].value;
+            }
             if (!errorLabels[i].classList.contains("hidden")) {
                 errorLabels[i].classList.add("hidden");
             }
         } else {
-            userSettings[inputs[i].getAttribute("name")] = "";
+            if (attr && Object.keys(userSettings).includes(attr)) {
+                userSettings[attr] = "";
+            }
             if (errorLabels[i].classList.contains("hidden")) {
                 errorLabels[i].classList.remove("hidden");
             }
@@ -40,36 +45,36 @@ function validate() {
         }
     }
 
-    const passwordErrorLabel = ArrayUtils.last(errorLabels);
+    const passwordErrorLabel = ArrayUtils.last(Array.from(errorLabels));
     if (
         !hasEmptyInput &&
         userSettings.newPassword === userSettings.newPasswordAgain
     ) {
         console.log("validate, Success!");
-        if (!passwordErrorLabel.classList.contains("hidden")) {
+        if (passwordErrorLabel && !passwordErrorLabel.classList.contains("hidden")) {
             passwordErrorLabel.classList.add("hidden");
         }
         return;
     }
 
     console.log("validate, Failed!");
-    passwordErrorLabel.classList.remove("hidden");
+    passwordErrorLabel && passwordErrorLabel.classList.remove("hidden");
 }
 
 function init() {
     console.log("validationUserSettings.init()");
 
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].onblur = function () {
-            console.log(`${this.name}.onblur()`);
-            if (this.value === "") {
-                this.classList.add("invalid");
+        inputs[i].onblur = () => {
+            console.log(`${inputs[i].name}.onblur()`);
+            if (inputs[i].value === "") {
+                inputs[i].classList.add("invalid");
             }
         };
-        inputs[i].onfocus = function () {
-            console.log(`${this.name}.onfocus()`);
-            if (this.classList.contains("invalid")) {
-                this.classList.remove("invalid");
+        inputs[i].onfocus = () => {
+            console.log(`${inputs[i].name}.onfocus()`);
+            if (inputs[i].classList.contains("invalid")) {
+                inputs[i].classList.remove("invalid");
             }
         };
     }

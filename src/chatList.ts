@@ -1,6 +1,6 @@
 "use strict";
 
-function getData() {
+export function getData() {
     return {
         logo: "Logo",
         previews: [
@@ -112,7 +112,7 @@ function getData() {
     };
 }
 
-function getTemplate(previewsTemplate, messagesTemplate) {
+export function getTemplate(previewsTemplate: string, messagesTemplate: string) {
     return `<div class="chat-list">
     <header class="chat-list-header">
         <div class="padding-8px">{{{logo}}}</div>

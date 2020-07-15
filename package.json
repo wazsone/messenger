@@ -2,18 +2,24 @@
     "name": "messenger",
     "version": "1.0.0",
     "description": "",
-    "main": "server.mjs",
+    "main": "server.js",
     "scripts": {
-        "start": "node --experimental-modules server.mjs",
+        "start": "tsc && node --experimental-modules ./static/js/server.js",
+        "build": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/express": "^4.17.7",
         "express": "^4.17.1",
         "express-handlebars": "^4.0.4",
         "handlebars": "^4.7.6"
     },
-    "type": "module"
+    "type": "module",
+    "devDependencies": {
+        "@types/node": "^14.0.23",
+        "typescript": "^3.9.6"
+    }
 }
