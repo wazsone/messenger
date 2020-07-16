@@ -8,20 +8,8 @@
         <link rel="stylesheet" href="../css/styles.css" type="text/css" />
         <script src="https://s3.amazonaws.com/builds.handlebarsjs.com/handlebars.min-v4.7.6.js"></script>
     </head>
-    <body>
-        <script type="module">
-            import { getTemplate, getData } from "/js/src/chatList.js";
-            import { getPreviewsTemplate } from "/js/src/previews.js";
-            import { getMessagesTemplate } from "/js/src/messages.js";
-            const previews = getPreviewsTemplate();
-            const messages = getMessagesTemplate();
-            const template = Handlebars.compile(
-                getTemplate(previews, messages)
-            );
-            document.getElementsByTagName("body")[0].innerHTML = template(
-                getData()
-            );
-        </script>
+    <body class="main">
+        <script type="module" src="../js/src/pages/chatScreen.js"></script>
         <script type="module" src="../js/src/validation/chatList.js"></script>
     </body>
 </html>

@@ -8,17 +8,11 @@
         <link rel="stylesheet" href="../css/styles.css" type="text/css" />
         <script src="https://s3.amazonaws.com/builds.handlebarsjs.com/handlebars.min-v4.7.6.js"></script>
     </head>
-    <body>
-        <script type="module">
-            import { getConfirmButtonTemplate } from "/js/src/confirmButton.js";
-            import { getTemplate, getData } from "/js/src/userSettings.js";
-            const template = Handlebars.compile(
-                getTemplate(getConfirmButtonTemplate())
-            );
-            document.getElementsByTagName("body")[0].innerHTML = template(
-                getData()
-            );
-        </script>
-        <script type="module" src="../js/src/validation/userSettings.js"></script>
+    <body class="main">
+        <script type="module" src="../js/src/pages/userSettings.js"></script>
+        <script
+            type="module"
+            src="../js/src/validation/userSettings.js"
+        ></script>
     </body>
 </html>

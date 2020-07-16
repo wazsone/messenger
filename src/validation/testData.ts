@@ -1,6 +1,6 @@
 "use strict";
 
-import { IUserLogin } from "./signIn";
+import { IUserLogin } from "./signIn.js";
 
 export const registeredUsers: IUserLogin[] = [
     { login: "User1", password: "qwe123" },

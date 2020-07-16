@@ -1,4 +1,4 @@
-<div class="base-page">
+export const template = `<div class="base-page">
     <div class="form sign-in-form">
         <div class="base-label form-logo-label margin-8px">Logo</div>
         <div class="form-content">
@@ -12,11 +12,11 @@
                 </div>
             </div>
             <div class="form-content-clickable-items">
-                {{> confirm-button confirmBtnName=confirmBtnName}}
+                {{{button}}}
                 <div class="margin-bottom-8px">
                     <a class="link" href="{{{link}}}">{{{linkTitle}}}</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>`;

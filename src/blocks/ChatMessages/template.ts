@@ -1,5 +1,4 @@
-export function getMessagesTemplate() {
-    return `{{#each messages}}
+export const template = `{{#each messages}}
     <li class="message-container padding-8px">
         <img class="chat-list-body-preview-item-img circle" />
         <div class="message-container-author-date-text">
@@ -7,8 +6,7 @@ export function getMessagesTemplate() {
                 <span>{{{this.author}}}</span>
                 <span class="message-date">{{{this.date}}}</span>
             </div>
-            <div class="message-text">{{{this.text}}}</div>
+            <div class="message-text">{{{this.message}}}</div>
         </div>
     </li>
 {{/each}}`;
-}

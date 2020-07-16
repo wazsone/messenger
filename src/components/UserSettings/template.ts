@@ -1,4 +1,4 @@
-<div class="form">
+export const template = `<div class="form">
     <h3 class="title">User settings</h3>
     <div class="user-settings-form-content">
         <div class="user-settings-form-content-item">
@@ -13,8 +13,8 @@
             </li>
             {{/each}}
             <li class="form-content-clickable-items">
-                {{> confirm-button confirmBtnName=confirmBtnName}}
+                {{{button}}}
             </li>
         </ul>
     </div>
-</div>
+</div>`;

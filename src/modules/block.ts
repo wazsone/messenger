@@ -1,16 +1,16 @@
 import EventBus from "./event-bus.js";
 import ObjectUtils from "../utils/objectUtils.js";
 
-// Нельзя создавать экземпляр данного класса
 interface IBlockProps {
     [prop: string]: any;
 }
-interface IBlockMeta {
+
+interface IBlockMeta<T> {
     tagName: string;
-    props: IBlockProps;
+    props: T;
 }
-export default abstract class Block {
-    abstract componentDidMount(): void;
+
+export default abstract class Block<T extends IBlockProps> {
     abstract render(): string;
 
     private static EVENTS = {
@@ -22,11 +22,11 @@ export default abstract class Block {
 
     private eventBus: () => EventBus;
     private _element: HTMLElement;
-    private _meta: IBlockMeta;
+    private _meta: IBlockMeta<T>;
 
-    props: IBlockProps;
+    protected props: T;
 
-    constructor(tagName: string = "div", props: IBlockProps = {}) {
+    constructor(tagName: string = "div", props: T) {
         this._meta = {
             tagName,
             props,
@@ -40,39 +40,57 @@ export default abstract class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _registerEvents(eventBus: EventBus) {
+    private init() {
+        this._createResources();
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    }
+
+    private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
-    _createResources() {
+    private _createResources() {
         const { tagName } = this._meta;
         this._element = this._createDocumentElement(tagName);
     }
 
-    init() {
-        this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-    }
-
-    _componentDidMount() {
+    private _componentDidMount() {
         this.componentDidMount();
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    _componentDidUpdate(oldProps: any, newProps: any) {
+    private _componentDidUpdate(oldProps: any, newProps: any) {
         if (this.componentDidUpdate(oldProps, newProps)) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
         }
     }
 
-    componentDidUpdate(oldProps: IBlockProps, newProps: IBlockProps) {
+    private _render() {
+        this._element.innerHTML = this.render();
+    }
+
+    private _makePropsProxy(props: T) {
+        return new Proxy(props, {
+            deleteProperty() {
+                throw new Error("нет доступа");
+            },
+        });
+    }
+
+    private _createDocumentElement(tagName: string) {
+        return document.createElement(tagName);
+    }
+
+    protected componentDidUpdate(oldProps: T, newProps: T) {
         return !ObjectUtils.isEqual(oldProps, newProps);
     }
 
-    setProps = (nextProps: undefined) => {
+    protected componentDidMount() {}
+
+    setProps = (nextProps: object) => {
         if (!nextProps) {
             return;
         }
@@ -85,25 +103,8 @@ export default abstract class Block {
         return this._element;
     }
 
-    _render() {
-        const block = this.render();
-        this._element.innerHTML = block;
-    }
-
     getContent() {
         return this.element;
-    }
-
-    _makePropsProxy(props: IBlockProps) {
-        return new Proxy(props, {
-            deleteProperty() {
-                throw new Error("нет доступа");
-            },
-        });
-    }
-
-    _createDocumentElement(tagName: string) {
-        return document.createElement(tagName);
     }
 
     show() {

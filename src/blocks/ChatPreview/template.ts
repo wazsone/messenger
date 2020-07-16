@@ -1,5 +1,4 @@
-export function getPreviewsTemplate() {
-    return `{{#each previews}}
+export const template = `{{#each previews}}
     <li class="chat-list-body-preview-item padding-8px">
         <img class="chat-list-body-preview-item-img circle" />
         <div class="chat-list-body-preview-item-msg">
@@ -10,4 +9,3 @@ export function getPreviewsTemplate() {
         </div>
     </li>
 {{/each}}`;
-}
