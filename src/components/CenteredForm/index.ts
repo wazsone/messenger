@@ -7,13 +7,14 @@ interface ISignFormInput {
     placeholder: string;
 }
 
-interface IProps {
+export interface IProps {
     formLabel: string;
     inputs: ISignFormInput[];
     errorMessage: string;
     confirmBtnName: string;
     link: string;
     linkTitle: string;
+    validationScript: string;
 }
 
 export default class CenteredForm extends Block<IProps> {

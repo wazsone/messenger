@@ -65,6 +65,6 @@ https://fourth-rich-pharaoh.glitch.me/
 
 Запустить проект: ```npm run start```
 
-```/static/index.html``` - обычная страница
+```/static/_index.html``` - обычная страница
 
-```/static/index-routing.html``` - страница с использования роутинга
+```/static/index.html``` - страница с использования роутинга

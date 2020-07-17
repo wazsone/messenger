@@ -1,6 +1,8 @@
 "use strict";
 
-export function getSignInData() {
+import { IProps } from "../components/CenteredForm/index.js";
+
+export function getSignInData(): IProps {
     return {
         formLabel: "Sign In",
         inputs: [
@@ -11,10 +13,11 @@ export function getSignInData() {
         confirmBtnName: "Sign In",
         linkTitle: "Don't have an account?",
         link: "sign-up.html",
+        validationScript: "/js/src/pages/validation/signIn.js"
     };
 }
 
-export function getSignUpData() {
+export function getSignUpData(): IProps {
     return {
         formLabel: "Sign Up",
         inputs: [
@@ -27,5 +30,6 @@ export function getSignUpData() {
         confirmBtnName: "Sign Up",
         linkTitle: "Sign In",
         link: "sign-in.html",
+        validationScript: "/js/src/pages/validation/signUp.js"
     };
 }

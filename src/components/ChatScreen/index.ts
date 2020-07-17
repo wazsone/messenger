@@ -7,7 +7,7 @@ import ChatMessages, {
     IChatMessageItem,
 } from "../../blocks/ChatMessages/index.js";
 
-interface IProps {
+export interface IProps {
     logo: string;
     previews: IChatPreviewItem[];
     messages: IChatMessageItem[];

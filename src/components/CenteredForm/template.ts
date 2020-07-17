@@ -19,4 +19,5 @@ export const template = `<div class="base-page">
             </div>
         </div>
     </div>
-</div>`;
+</div>
+<script type="module" src="{{{validationScript}}}"></script>`;

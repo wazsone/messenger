@@ -1,7 +1,7 @@
 import Block from "../../modules/block.js";
 import { template } from "./template.js";
 
-interface IProps {
+export interface IProps {
     errorCode: string;
     errorMessage: string;
 }

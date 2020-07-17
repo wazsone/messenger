@@ -4,8 +4,8 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "start": "node-sass scss -o static/css && tsc && node --experimental-modules ./static/js/server.js",
-        "build": "tsc",
+        "start": "npm run build && node --experimental-modules ./static/js/server.js",
+        "build": "node-sass scss -o static/css && tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],

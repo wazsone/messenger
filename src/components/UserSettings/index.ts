@@ -8,7 +8,7 @@ interface IUserSettingsInput {
     errorMessage: string;
 }
 
-interface IProps {
+export interface IProps {
     inputs: IUserSettingsInput[];
     confirmBtnName: string;
 }

@@ -3,7 +3,7 @@ import Block from "../modules/block.js";
 
 type Routes = Route<any> | null;
 export default class Router {
-    static _instance: Router;
+    private static _instance: Router;
     private _rootQuery: string;
     private routes: Routes[];
     private history: History;
