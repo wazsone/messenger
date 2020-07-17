@@ -56,7 +56,7 @@ interface IMethodsOptions extends Partial<ICommonOptions> {
     timeout?: number;
 }
 
-class HTTPTransport {
+class HTTP {
     get = (url: string, options: IMethodsOptions = {}) => {
         return this.request(
             url,
@@ -157,4 +157,4 @@ class HTTPTransport {
     };
 }
 
-export default HTTPTransport;
+export default HTTP;
