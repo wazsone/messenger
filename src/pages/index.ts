@@ -34,7 +34,8 @@ router
     .use<IChatScreenProps>("/chat-screen", pages[6])
     .start();
 
-for (const link of document.getElementsByTagName("a")) {
+const pagesLinks = document.getElementById("pages-links")?.querySelectorAll("a") ?? [];
+for (const link of pagesLinks) {
     link.onclick = (e: any) => {
         console.log(e.target.href);
         console.log(e.target.baseURI.length);
