@@ -1,10 +1,10 @@
-import Block from "../../modules/block.js";
+import { Block } from "../../modules/block.js";
 import { template } from "./template.js";
-import ChatPreview, {
-    IChatPreviewItem,
+import {
+    ChatPreview, IChatPreviewItem,
 } from "../../blocks/ChatPreview/index.js";
-import ChatMessages, {
-    IChatMessageItem,
+import {
+    ChatMessages, IChatMessageItem,
 } from "../../blocks/ChatMessages/index.js";
 import { initChatValidation } from "../../pages/validation/chatScreen.js";
 
@@ -14,7 +14,7 @@ export interface IProps {
     messages: IChatMessageItem[];
 }
 
-export default class ChatScreen extends Block<IProps> {
+export class ChatScreen extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
     }

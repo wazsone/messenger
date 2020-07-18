@@ -2,7 +2,7 @@ interface IListeners {
     [event: string]: Function[];
 }
 
-export default class EventBus {
+export class EventBus {
     private listeners: IListeners;
     constructor() {
         this.listeners = {};

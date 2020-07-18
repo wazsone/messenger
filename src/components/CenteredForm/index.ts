@@ -1,6 +1,6 @@
-import Block from "../../modules/block.js";
+import { Block } from "../../modules/block.js";
 import { template } from "./template.js";
-import Button from "../../blocks/Button/index.js";
+import { Button } from "../../blocks/Button/index.js";
 
 interface ISignFormInput {
     name: string;
@@ -18,7 +18,7 @@ export interface IProps {
     initValidation: (className: string) => void;
 }
 
-export default class CenteredForm extends Block<IProps> {
+export class CenteredForm extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
     }

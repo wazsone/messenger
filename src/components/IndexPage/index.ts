@@ -1,4 +1,4 @@
-import Block from "../../modules/block.js";
+import { Block } from "../../modules/block.js";
 
 interface IProps { }
 
@@ -16,7 +16,7 @@ const template = `
     </ul>
 </div>`;
 
-export default class IndexPage extends Block<IProps> {
+export class IndexPage extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
     }

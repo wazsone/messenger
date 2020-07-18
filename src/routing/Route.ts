@@ -1,11 +1,11 @@
 import { renderDOM } from "../utils/renderUtils.js";
-import Block from "../modules/block.js";
+import { Block } from "../modules/block.js";
 
 interface IRouteProps {
     rootQuery: string;
 }
 
-export default class Route<T> {
+export class Route<T> {
     private _pathname: string;
     private _getBlock: () => Block<T>;
     private _block: Block<T> | null;

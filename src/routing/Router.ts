@@ -1,8 +1,8 @@
-import Route from "./Route.js";
-import Block from "../modules/block.js";
+import { Route } from "./Route.js";
+import { Block } from "../modules/block.js";
 
 type Routes = Route<any> | null;
-export default class Router {
+export class Router {
     private static _instance: Router;
     private _rootQuery: string;
     private routes: Routes[];

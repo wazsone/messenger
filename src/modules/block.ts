@@ -1,5 +1,5 @@
-import EventBus from "./event-bus.js";
-import ObjectUtils from "../utils/objectUtils.js";
+import { EventBus } from "./event-bus.js";
+import { ObjectUtils } from "../utils/objectUtils.js";
 
 interface IBlockProps {
     [prop: string]: any;
@@ -10,7 +10,7 @@ interface IBlockMeta<T> {
     props: T;
 }
 
-export default abstract class Block<T extends IBlockProps> {
+export abstract class Block<T extends IBlockProps> {
     abstract render(): string;
 
     private static EVENTS = {
@@ -88,7 +88,7 @@ export default abstract class Block<T extends IBlockProps> {
         return !ObjectUtils.isEqual(oldProps, newProps);
     }
 
-    protected componentDidMount() {}
+    protected componentDidMount() { }
 
     setProps = (nextProps: object) => {
         if (!nextProps) {

@@ -1,6 +1,6 @@
 "use strict";
 
-import ArrayUtils from "../../utils/arrayUtils.js";
+import { ArrayUtils } from "../../utils/arrayUtils.js";
 
 let userSettingsInputs: NodeListOf<HTMLInputElement>;
 let userSettingsErrorLabels: HTMLCollectionOf<HTMLLabelElement>;

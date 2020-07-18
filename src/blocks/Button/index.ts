@@ -1,4 +1,4 @@
-import Block from "../../modules/block.js";
+import { Block } from "../../modules/block.js";
 import { template } from "./template.js";
 
 interface IProps {
@@ -6,7 +6,7 @@ interface IProps {
     idPrefix?: string;
 }
 
-export default class Button extends Block<IProps> {
+export class Button extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
     }

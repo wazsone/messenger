@@ -1,5 +1,5 @@
 import { renderDOM } from "../utils/renderUtils.js";
-import UserSettings from "../components/UserSettings/index.js";
+import { UserSettings } from "../components/UserSettings/index.js";
 import { getData } from "../data/userSettings.js";
 
 const userSettingsData = getData();

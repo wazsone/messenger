@@ -1,13 +1,13 @@
-import Router from "../routing/Router.js";
+import { Router } from "../routing/Router.js";
 import { getData as getErrorData } from "../data/errors.js";
 import { getSignInData, getSignUpData } from "../data/centeredForm.js";
 import { getData as getUserSettingsData } from "../data/userSettings.js";
 import { getData as getChatScreenData } from "../data/chatScreen.js";
-import IndexPage from "../components/IndexPage/index.js";
-import Error, { IProps as IErrorProps } from "../components/Error/index.js";
-import CenteredForm, { IProps as ICenteredFormProps } from "../components/CenteredForm/index.js";
-import UserSettings, { IProps as IUserSettingsProps } from "../components/UserSettings/index.js";
-import ChatScreen, { IProps as IChatScreenProps } from "../components/ChatScreen/index.js";
+import { IndexPage } from "../components/IndexPage/index.js";
+import { Error, IProps as IErrorProps } from "../components/Error/index.js";
+import { CenteredForm, IProps as ICenteredFormProps } from "../components/CenteredForm/index.js";
+import { UserSettings, IProps as IUserSettingsProps } from "../components/UserSettings/index.js";
+import { ChatScreen, IProps as IChatScreenProps } from "../components/ChatScreen/index.js";
 
 const router = new Router(".app");
 

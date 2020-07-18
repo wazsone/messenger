@@ -1,4 +1,4 @@
-import Block from "../../modules/block.js";
+import { Block } from "../../modules/block.js";
 import { template } from "./template.js";
 
 export interface IChatPreviewItem {
@@ -11,7 +11,7 @@ interface IProps {
     previews: IChatPreviewItem[];
 }
 
-export default class ChatPreview extends Block<IProps> {
+export class ChatPreview extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
     }

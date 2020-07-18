@@ -1,4 +1,4 @@
-export default class ArrayUtils {
+export class ArrayUtils {
     static last<T>(list: T[]) {
         if (!list || list.length === 0) {
             return undefined;

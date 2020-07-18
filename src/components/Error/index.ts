@@ -1,4 +1,4 @@
-import Block from "../../modules/block.js";
+import { Block } from "../../modules/block.js";
 import { template } from "./template.js";
 
 export interface IProps {
@@ -6,7 +6,7 @@ export interface IProps {
     errorMessage: string;
 }
 
-export default class Error extends Block<IProps> {
+export class Error extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
     }

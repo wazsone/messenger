@@ -1,6 +1,6 @@
-import Block from "../../modules/block.js";
+import { Block } from "../../modules/block.js";
 import { template } from "./template.js";
-import Button from "../../blocks/Button/index.js";
+import { Button } from "../../blocks/Button/index.js";
 import { initUserSettingsValidation } from "../../pages/validation/userSettings.js";
 
 interface IUserSettingsInput {
@@ -14,7 +14,7 @@ export interface IProps {
     confirmBtnName: string;
 }
 
-export default class UserSettings extends Block<IProps> {
+export class UserSettings extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
     }

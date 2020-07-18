@@ -1,4 +1,4 @@
-export default class ObjectUtils {
+export class ObjectUtils {
     static isEqual<T>(obj1: T, obj2: T) {
         const obj1Keys = Object.keys(obj1);
         const obj2Keys = Object.keys(obj2);
