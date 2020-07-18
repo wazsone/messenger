@@ -3,7 +3,7 @@ export const template = `<div class="form">
     <div class="user-settings-form-content">
         <div class="user-settings-form-content-item">
             <img class="user-settings-avatar-img circle" />
-            <a class="link user-settings-avatar-change-button" href="">Change avatar</a>
+            <a class="link user-settings-avatar-change-button" href="/upload-avatar">Change avatar</a>
         </div>
         <ul class="user-settings-form-content-item margin-bottom-8px">
             {{#each inputs}}

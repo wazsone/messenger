@@ -33,7 +33,7 @@ export function getSignUpData(): IProps {
         errorMessage: "Passwords are not equal",
         confirmBtnName: "Sign Up",
         linkTitle: "Sign In",
-        link: "sign-in",
+        link: "/sign-in",
         initValidation: initSignUpValidation
     };
 }

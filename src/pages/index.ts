@@ -8,7 +8,7 @@ import { Error, IProps as IErrorProps } from "../components/Error/index.js";
 import { CenteredForm, IProps as ICenteredFormProps } from "../components/CenteredForm/index.js";
 import { UserSettings, IProps as IUserSettingsProps } from "../components/UserSettings/index.js";
 import { ChatScreen, IProps as IChatScreenProps } from "../components/ChatScreen/index.js";
-import { renderDOM } from "../utils/renderUtils.js";
+import { renderDOM, handleLinkClick } from "../utils/renderUtils.js";
 import { Block } from "../modules/block.js";
 
 const pages: Block<any>[] = [
@@ -34,14 +34,7 @@ router
     .use<IChatScreenProps>("/chat-screen", pages[6])
     .start();
 
-const pagesLinks = document.getElementById("pages-links")?.querySelectorAll("a") ?? [];
-for (const link of pagesLinks) {
-    link.onclick = (e: any) => {
-        console.log(e.target.href);
-        console.log(e.target.baseURI.length);
-        const route = e.target.href.substring(e.target.baseURI.length - 1);
-        console.log(route);
-        router.go(route);
-        e.preventDefault();
-    }
+const links = document.querySelectorAll("a") ?? [];
+for (const link of links) {
+    link.onclick = handleLinkClick;
 }
