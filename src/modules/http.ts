@@ -1,3 +1,5 @@
+import { ICreateChatRequest } from "../api/chat-api";
+
 enum METHODS {
     GET = "GET",
     POST = "POST",
@@ -43,9 +45,13 @@ function queryStringify(data: object) {
     }, "");
 }
 
+// all request interfaces:
+// ICreateChatRequest | ICreateSignUpRequest | ...
+type requestData = ICreateChatRequest;
+
 interface ICommonOptions {
     headers: object;
-    data: object;
+    data: requestData;
 }
 
 interface IRequestOptions extends Partial<ICommonOptions> {
