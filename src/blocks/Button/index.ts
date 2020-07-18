@@ -3,6 +3,7 @@ import { template } from "./template.js";
 
 interface IProps {
     name: string;
+    idPrefix?: string;
 }
 
 export default class Button extends Block<IProps> {
