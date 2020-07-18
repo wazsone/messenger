@@ -4,20 +4,21 @@ import { Block } from "../modules/block.js";
 type Routes = Route<any> | null;
 export class Router {
     private static _instance: Router;
+    static getInstance() {
+        if (!Router._instance) {
+            return Router._instance = new Router();
+        }
+        return Router._instance;
+    }
+
     private _routes: Routes[];
     private _history: History;
     private _currentRoute: Routes;
 
-    constructor() {
-        if (Router._instance) {
-            return Router._instance;
-        }
-
+    private constructor() {
         this._routes = [];
         this._history = window.history;
         this._currentRoute = null;
-
-        Router._instance = this;
     }
 
     private _onRoute(pathname: string) {

@@ -23,7 +23,7 @@ const pages: Block<any>[] = [
 
 pages.forEach(page => renderDOM(".app", page));
 
-const router = new Router();
+const router = Router.getInstance();
 router
     .use<{}>("/", pages[0])
     .use<IErrorProps>("/error/404", pages[1])
