@@ -19,7 +19,7 @@ export const template = `<div class="chat-list">
                     <textarea class="chat-list-body-input-form" autoFocus spellCheck
                         placeholder="Please write a message..."></textarea>
                 </div>
-                <button class="chat-list-body-input-send-buttom">SEND</button>
+                <button class="chat-list-body-input-send-bottom">SEND</button>
             </div>
             <ul class="chat-list-body-messages-container">
                 {{{messages}}}

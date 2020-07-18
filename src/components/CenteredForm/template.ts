@@ -1,5 +1,5 @@
 export const template = `<div class="base-page">
-    <div class="form sign-in-form">
+    <div class="form {{{formClassname}}}">
         <div class="base-label form-logo-label margin-8px">Logo</div>
         <div class="form-content">
             <div class="base-label">{{{formLabel}}}</div>
@@ -7,7 +7,7 @@ export const template = `<div class="base-page">
                 {{#each inputs}}
                 <input name="{{this.name}}" class="input padding-8px margin-bottom-8px" type="text" placeholder="{{this.placeholder}}" />
                 {{/each}}
-                <div class="hidden error-label">
+                <div id="{{{errorLabelIdPrefix}}}error-label" class="hidden error-label">
                     {{{errorMessage}}}
                 </div>
             </div>
@@ -19,5 +19,4 @@ export const template = `<div class="base-page">
             </div>
         </div>
     </div>
-</div>
-<script type="module" src="{{{validationScript}}}"></script>`;
+</div>`;

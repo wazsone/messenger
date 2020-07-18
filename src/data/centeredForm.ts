@@ -1,9 +1,12 @@
 "use strict";
 
 import { IProps } from "../components/CenteredForm/index.js";
+import { initSignUpValidation } from "../pages/validation/signUp.js";
+import { initSignInValidation } from "../pages/validation/signIn.js";
 
 export function getSignInData(): IProps {
     return {
+        formClassname: "sign-in-form",
         formLabel: "Sign In",
         inputs: [
             { name: "login", placeholder: "Login" },
@@ -12,13 +15,14 @@ export function getSignInData(): IProps {
         errorMessage: "Wrong login/password",
         confirmBtnName: "Sign In",
         linkTitle: "Don't have an account?",
-        link: "sign-up.html",
-        validationScript: "/js/src/pages/validation/signIn.js"
+        link: "/sign-up",
+        initValidation: initSignInValidation
     };
 }
 
 export function getSignUpData(): IProps {
     return {
+        formClassname: "sign-up-form",
         formLabel: "Sign Up",
         inputs: [
             { name: "email", placeholder: "E-mail" },
@@ -29,7 +33,7 @@ export function getSignUpData(): IProps {
         errorMessage: "Passwords are not equal",
         confirmBtnName: "Sign Up",
         linkTitle: "Sign In",
-        link: "sign-in.html",
-        validationScript: "/js/src/pages/validation/signUp.js"
+        link: "sign-in",
+        initValidation: initSignUpValidation
     };
 }

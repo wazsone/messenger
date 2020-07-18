@@ -1,8 +1,9 @@
 "use strict";
 
-const inputs = document.getElementsByClassName("input") as HTMLCollectionOf<HTMLInputElement>;
+let SignUpInputs: NodeListOf<HTMLInputElement>;
+let SignUpErrorLabel: HTMLLabelElement;
 
-export interface IUserSettings {
+interface IUserSettings {
     email: string,
     login: string,
     password: string,
@@ -17,10 +18,10 @@ function validate() {
         password: "",
         passwordAgain: "",
     };
-    for (let i = 0; i < inputs.length; i++) {
-        const attr = inputs[i].getAttribute("name");
+    for (let i = 0; i < SignUpInputs.length; i++) {
+        const attr = SignUpInputs[i].getAttribute("name");
         if (attr && Object.keys(userSettings).includes(attr)) {
-            userSettings[attr] = inputs[i].value;
+            userSettings[attr] = SignUpInputs[i].value;
         }
     }
     console.log("validate.userSettings:");
@@ -33,43 +34,46 @@ function validate() {
         }
     }
 
-    const errorLabel = document.getElementsByClassName("error-label")[0] as HTMLLabelElement;
     if (
         !hasEmptyInput &&
         userSettings.password === userSettings.passwordAgain
     ) {
         console.log("validate, Success!");
-        if (!errorLabel.classList.contains("hidden")) {
-            errorLabel.classList.add("hidden");
+        if (!SignUpErrorLabel.classList.contains("hidden")) {
+            SignUpErrorLabel.classList.add("hidden");
         }
         return;
     }
 
     console.log("validate, Failed!");
-    errorLabel.classList.remove("hidden");
+    SignUpErrorLabel.classList.remove("hidden");
 }
 
-function init() {
-    console.log("validationSignUp.init()");
-
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].onblur = () => {
-            console.log(`${inputs[i].name}.onblur()`);
-            if (inputs[i].value === "") {
-                inputs[i].classList.add("invalid");
+export function initSignUpValidation(className: string) {
+    console.log("validationSignUp.init");
+    SignUpErrorLabel = document.getElementById(`${className}error-label`) as HTMLLabelElement;
+    const signUpForm = document.getElementsByClassName(className)[0];
+    SignUpInputs = signUpForm?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
+    if (!SignUpInputs) {
+        return;
+    }
+    for (let i = 0; i < SignUpInputs.length; i++) {
+        SignUpInputs[i].onblur = () => {
+            console.log(`${SignUpInputs[i].name}.onblur()`);
+            if (SignUpInputs[i].value === "") {
+                SignUpInputs[i].classList.add("invalid");
             }
         };
-        inputs[i].onfocus = () => {
-            console.log(`${inputs[i].name}.onfocus()`);
-            if (inputs[i].classList.contains("invalid")) {
-                inputs[i].classList.remove("invalid");
+        SignUpInputs[i].onfocus = () => {
+            console.log(`${SignUpInputs[i].name}.onfocus()`);
+            if (SignUpInputs[i].classList.contains("invalid")) {
+                SignUpInputs[i].classList.remove("invalid");
             }
         };
     }
 
     document
-        .getElementsByClassName("confirm-button")[0]
-        .addEventListener("click", validate);
+        .getElementById(`${className}confirm-button`)
+        ?.addEventListener("click", validate);
 }
 
-init();

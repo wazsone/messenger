@@ -6,6 +6,7 @@ import ChatPreview, {
 import ChatMessages, {
     IChatMessageItem,
 } from "../../blocks/ChatMessages/index.js";
+import { initChatValidation } from "../../pages/validation/chatScreen.js";
 
 export interface IProps {
     logo: string;
@@ -16,6 +17,10 @@ export interface IProps {
 export default class ChatScreen extends Block<IProps> {
     constructor(props: IProps) {
         super("div", props);
+    }
+
+    componentDidMount() {
+        setTimeout(initChatValidation, 0);
     }
 
     render() {

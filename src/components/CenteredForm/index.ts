@@ -8,13 +8,14 @@ interface ISignFormInput {
 }
 
 export interface IProps {
+    formClassname: string;
     formLabel: string;
     inputs: ISignFormInput[];
     errorMessage: string;
     confirmBtnName: string;
     link: string;
     linkTitle: string;
-    validationScript: string;
+    initValidation: (className: string) => void;
 }
 
 export default class CenteredForm extends Block<IProps> {
@@ -22,10 +23,17 @@ export default class CenteredForm extends Block<IProps> {
         super("div", props);
     }
 
+    componentDidMount() {
+        const { formClassname, initValidation } = this.props;
+        setTimeout(() => initValidation(formClassname), 0);
+    }
+
     render() {
+        const { confirmBtnName, formClassname } = this.props;
         const formData = {
             ...this.props,
-            button: new Button({ name: this.props.confirmBtnName }).render(),
+            button: new Button({ name: confirmBtnName, idPrefix: formClassname }).render(),
+            errorLabelIdPrefix: formClassname
         };
         return Handlebars.compile(template)(formData);
     }

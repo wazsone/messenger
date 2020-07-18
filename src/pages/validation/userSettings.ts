@@ -2,7 +2,8 @@
 
 import ArrayUtils from "../../utils/arrayUtils.js";
 
-const inputs = document.getElementsByClassName("input") as HTMLCollectionOf<HTMLInputElement>;
+let userSettingsInputs: NodeListOf<HTMLInputElement>;
+let userSettingsErrorLabels: HTMLCollectionOf<HTMLLabelElement>;
 
 function validate() {
     console.log("validate()");
@@ -14,24 +15,21 @@ function validate() {
         newPassword: "",
         newPasswordAgain: "",
     };
-    const errorLabels = document.getElementsByClassName(
-        "user-settings-error-label"
-    ) as HTMLCollectionOf<HTMLLabelElement>;
-    for (let i = 0; i < inputs.length; i++) {
-        const attr = inputs[i].getAttribute("name");
-        if (inputs[i].value.search(/<[^>]*script/i) < 0) {
+    for (let i = 0; i < userSettingsInputs?.length; i++) {
+        const attr = userSettingsInputs[i].getAttribute("name");
+        if (userSettingsInputs[i].value.search(/<[^>]*script/i) < 0) {
             if (attr && Object.keys(userSettings).includes(attr)) {
-                userSettings[attr] = inputs[i].value;
+                userSettings[attr] = userSettingsInputs[i].value;
             }
-            if (!errorLabels[i].classList.contains("hidden")) {
-                errorLabels[i].classList.add("hidden");
+            if (userSettingsErrorLabels && !userSettingsErrorLabels[i]?.classList.contains("hidden")) {
+                userSettingsErrorLabels[i]?.classList.add("hidden");
             }
         } else {
             if (attr && Object.keys(userSettings).includes(attr)) {
                 userSettings[attr] = "";
             }
-            if (errorLabels[i].classList.contains("hidden")) {
-                errorLabels[i].classList.remove("hidden");
+            if (userSettingsErrorLabels && userSettingsErrorLabels[i].classList.contains("hidden")) {
+                userSettingsErrorLabels[i].classList.remove("hidden");
             }
         }
     }
@@ -44,8 +42,7 @@ function validate() {
             break;
         }
     }
-
-    const passwordErrorLabel = ArrayUtils.last(Array.from(errorLabels));
+    const passwordErrorLabel = ArrayUtils.last(Array.from(userSettingsErrorLabels));
     if (
         !hasEmptyInput &&
         userSettings.newPassword === userSettings.newPasswordAgain
@@ -56,32 +53,34 @@ function validate() {
         }
         return;
     }
-
     console.log("validate, Failed!");
     passwordErrorLabel && passwordErrorLabel.classList.remove("hidden");
 }
 
-function init() {
+export function initUserSettingsValidation(confirmBtnName: string) {
     console.log("validationUserSettings.init()");
-
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].onblur = () => {
-            console.log(`${inputs[i].name}.onblur()`);
-            if (inputs[i].value === "") {
-                inputs[i].classList.add("invalid");
+    userSettingsInputs = document
+        .getElementsByClassName("user-settings-form-content")[0]
+        ?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
+    userSettingsErrorLabels = document.getElementsByClassName(
+        "user-settings-error-label"
+    ) as HTMLCollectionOf<HTMLLabelElement>;
+    for (let i = 0; i < userSettingsInputs?.length; i++) {
+        userSettingsInputs[i].onblur = () => {
+            console.log(`${userSettingsInputs[i].name}.onblur()`);
+            if (userSettingsInputs[i].value === "") {
+                userSettingsInputs[i].classList.add("invalid");
             }
         };
-        inputs[i].onfocus = () => {
-            console.log(`${inputs[i].name}.onfocus()`);
-            if (inputs[i].classList.contains("invalid")) {
-                inputs[i].classList.remove("invalid");
+        userSettingsInputs[i].onfocus = () => {
+            console.log(`${userSettingsInputs[i].name}.onfocus()`);
+            if (userSettingsInputs[i].classList.contains("invalid")) {
+                userSettingsInputs[i].classList.remove("invalid");
             }
         };
     }
 
     document
-        .getElementsByClassName("confirm-button")[0]
-        .addEventListener("click", validate);
+        .getElementById(`${confirmBtnName}confirm-button`)
+        ?.addEventListener("click", validate);
 }
-
-init();
