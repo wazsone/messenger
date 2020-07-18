@@ -35,12 +35,12 @@ body {
     background-color: #d8d8d8;
     color: gray;
     display: block;
-}
-.input:focus {
-    outline: none;
-    outline-offset: 0px;
-    border: solid darkgrey;
-    border-width: 1px;
+    &:focus {
+        outline: none;
+        outline-offset: 0px;
+        border: solid darkgrey;
+        border-width: 1px;
+    }
 }
 .error-label {
     font-size: small;

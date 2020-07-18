@@ -175,13 +175,12 @@
     background-color: lightgray;
     border-style: solid;
     border-width: 2px;
+    &:focus {
+        outline: none;
+    }
 }
 
-.chat-list-body-input-form:focus {
-    outline: none;
-}
-
-.chat-list-body-input-send-buttom {
+.chat-list-body-input-send-bottom {
     float: right;
     font-weight: bolder;
     color: lightskyblue;
@@ -189,8 +188,8 @@
     background: none;
     align-self: flex-end;
     border-radius: 0px;
-}
-
-.chat-list-body-input-send-buttom:focus {
-    outline: 2px solid lightskyblue;
+    &:focus {
+        outline: 2px solid lightskyblue;
+    }
+    
 }
