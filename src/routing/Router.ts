@@ -48,7 +48,7 @@ export class Router {
             console.log(event);
             console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
             this._onRoute(event.currentTarget.location.pathname);
-        }).bind(this);
+        });
 
         this._onRoute(window.location.pathname);
     }
