@@ -5,8 +5,8 @@ type Routes = Route<any> | null;
 export class Router {
     private static _instance: Router;
     private _rootQuery: string;
-    private routes: Routes[];
-    private history: History;
+    private _routes: Routes[];
+    private _history: History;
     private _currentRoute: Routes;
 
     constructor(rootQuery: string) {
@@ -14,8 +14,8 @@ export class Router {
             return Router._instance;
         }
 
-        this.routes = [];
-        this.history = window.history;
+        this._routes = [];
+        this._history = window.history;
         this._currentRoute = null;
         this._rootQuery = rootQuery;
 
@@ -41,7 +41,7 @@ export class Router {
         const route = new Route<T>(pathname, getBlock, {
             rootQuery: this._rootQuery,
         });
-        this.routes.push(route);
+        this._routes.push(route);
         return this;
     }
 
@@ -56,25 +56,25 @@ export class Router {
     }
 
     go(pathname: string) {
-        this.history.pushState({}, "", pathname);
+        this._history.pushState({}, "", pathname);
         this._onRoute(pathname);
     }
 
     back() {
-        if (this.routes.length > 1) {
-            this.history.back();
+        if (this._routes.length > 1) {
+            this._history.back();
         }
     }
 
     forward() {
-        const index = this.routes.indexOf(this._currentRoute);
-        const maxIndex = this.routes.length - 1;
+        const index = this._routes.indexOf(this._currentRoute);
+        const maxIndex = this._routes.length - 1;
         if (index >= 0 && maxIndex > index) {
-            this.history.forward();
+            this._history.forward();
         }
     }
 
     getRoute(pathname: string) {
-        return this.routes.find((route) => route?.match(pathname));
+        return this._routes.find((route) => route?.match(pathname));
     }
 }

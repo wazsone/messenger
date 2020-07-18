@@ -20,7 +20,7 @@ export abstract class Block<T extends IBlockProps> {
         FLOW_RENDER: "flow:render",
     };
 
-    private eventBus: () => EventBus;
+    private _eventBus: () => EventBus;
     private _element: HTMLElement;
     private _meta: IBlockMeta<T>;
 
@@ -35,14 +35,14 @@ export abstract class Block<T extends IBlockProps> {
         this.props = this._makePropsProxy(props);
 
         const eventBus = new EventBus();
-        this.eventBus = () => eventBus;
+        this._eventBus = () => eventBus;
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
     }
 
     private init() {
         this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+        this._eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
     private _registerEvents(eventBus: EventBus) {
@@ -59,12 +59,12 @@ export abstract class Block<T extends IBlockProps> {
 
     private _componentDidMount() {
         this.componentDidMount();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
     private _componentDidUpdate(oldProps: any, newProps: any) {
         if (this.componentDidUpdate(oldProps, newProps)) {
-            this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+            this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
         }
     }
 
@@ -96,7 +96,7 @@ export abstract class Block<T extends IBlockProps> {
         }
         const oldProps = { ...this.props };
         Object.assign(this.props, nextProps);
-        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
+        this._eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     };
 
     get element() {
