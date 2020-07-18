@@ -4,12 +4,11 @@ import { Block } from "../modules/block.js";
 type Routes = Route<any> | null;
 export class Router {
     private static _instance: Router;
-    private _rootQuery: string;
     private _routes: Routes[];
     private _history: History;
     private _currentRoute: Routes;
 
-    constructor(rootQuery: string) {
+    constructor() {
         if (Router._instance) {
             return Router._instance;
         }
@@ -17,7 +16,6 @@ export class Router {
         this._routes = [];
         this._history = window.history;
         this._currentRoute = null;
-        this._rootQuery = rootQuery;
 
         Router._instance = this;
     }
@@ -37,10 +35,9 @@ export class Router {
         route.render();
     }
 
-    use<T>(pathname: string, getBlock: () => Block<T>) {
-        const route = new Route<T>(pathname, getBlock, {
-            rootQuery: this._rootQuery,
-        });
+    use<T>(pathname: string, block: Block<T>) {
+        const route = new Route<T>(pathname, block);
+        route.leave();
         this._routes.push(route);
         return this;
     }

@@ -1,25 +1,15 @@
-import { renderDOM } from "../utils/renderUtils.js";
 import { Block } from "../modules/block.js";
-
-interface IRouteProps {
-    rootQuery: string;
-}
 
 export class Route<T> {
     private _pathname: string;
-    private _getBlock: () => Block<T>;
-    private _block: Block<T> | null;
-    private _props: IRouteProps;
+    private _block: Block<T>;
 
     constructor(
         pathname: string,
-        getBlock: () => Block<T>,
-        props: IRouteProps
+        block: Block<T>,
     ) {
         this._pathname = pathname;
-        this._getBlock = getBlock;
-        this._props = props;
-        this._block = null;
+        this._block = block;
     }
 
     navigate(pathname: string) {
@@ -40,12 +30,6 @@ export class Route<T> {
     }
 
     render() {
-        if (!this._block) {
-            this._block = this._getBlock();
-            renderDOM<T>(this._props.rootQuery, this._block);
-            return;
-        }
-
         this._block.show();
     }
 }
