@@ -27,7 +27,7 @@ function queryStringify(data: object) {
             for (let i = 0; i < data[key].length; i++) {
                 str += `${key}[${i}]=${data[key][i]}${
                     i < data[key].length - 1 ? "&" : ""
-                }`;
+                    }`;
             }
             return `${result}${str}${index < keys.length - 1 ? "&" : ""}`;
         }
@@ -35,11 +35,11 @@ function queryStringify(data: object) {
             const objQuery = getObjQueryStringify(data[key]);
             return `${result}${key}${objQuery}${
                 index < keys.length - 1 ? "&" : ""
-            }`;
+                }`;
         }
         return `${result}${key}=${data[key]}${
             index < keys.length - 1 ? "&" : ""
-        }`;
+            }`;
     }, "");
 }
 
@@ -57,7 +57,13 @@ interface IMethodsOptions extends Partial<ICommonOptions> {
 }
 
 export class HTTP {
+    private baseUrl: string;
+    constructor(baseUrl: string) {
+        this.baseUrl = baseUrl ?? "";
+    }
+
     get = (url: string, options: IMethodsOptions = {}) => {
+        url = `${this.baseUrl}${url}`;
         return this.request(
             url,
             {
@@ -68,6 +74,7 @@ export class HTTP {
         );
     };
     post = (url: string, options: IMethodsOptions = {}) => {
+        url = `${this.baseUrl}${url}`;
         const headers = {
             ["Content-type"]: "application/json; charset=utf-8",
         };
@@ -85,6 +92,7 @@ export class HTTP {
         );
     };
     put = (url: string, options: IMethodsOptions = {}) => {
+        url = `${this.baseUrl}${url}`;
         const headers = {
             ["Content-type"]: "application/json; charset=utf-8",
         };
@@ -102,6 +110,7 @@ export class HTTP {
         );
     };
     delete = (url: string, options: IMethodsOptions = {}) => {
+        url = `${this.baseUrl}${url}`;
         return this.request(
             url,
             {
@@ -116,6 +125,7 @@ export class HTTP {
         options: IRequestOptions = {},
         timeout: number = 5000
     ) => {
+        url = `${this.baseUrl}${url}`;
         const { headers = {}, method, data } = options;
 
         return new Promise(function (resolve, reject) {
