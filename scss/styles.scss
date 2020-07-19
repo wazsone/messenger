@@ -17,10 +17,8 @@
 }
 .user-settings-form-content-item {
     width: 200px;
-    display: flex;
-    flex-direction: column;
+    @extend .centered-flex-column;
     justify-content: flex-start;
-    align-items: center;
 }
 .user-settings-avatar-img {
     height: 100px;
@@ -44,9 +42,8 @@
     left: 0;
 }
 .chat-list-header {
-    display: flex;
+    @extend .centered-flex;
     justify-content: space-between;
-    align-items: center;
     background-color: bisque;
     height: 5vh;
 }
@@ -56,8 +53,7 @@
     height: 95vh;
 }
 .chat-list-body-preview {
-    display: flex;
-    flex-direction: column;
+    @extend .flex-column;
     flex-basis: 0;
     flex-grow: 1;
     border-right: solid 1px;
@@ -79,8 +75,7 @@
     }
 }
 .chat-list-body-messages-container {
-    display: flex;
-    flex-direction: column;
+    @extend .flex-column;
     padding: 0 98px 0 172px;
     overflow-y: scroll;
 }
@@ -91,8 +86,7 @@
     border-bottom: solid 1px;
 }
 .chat-list-body-preview-list {
-    display: flex;
-    flex-direction: column;
+    @extend .flex-column;
     overflow-y: scroll;
 }
 .chat-list-body-preview-item {
@@ -108,21 +102,17 @@
 }
 .chat-list-body-preview-item-msg {
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    @extend .flex-column;
     justify-content: center;
 }
 .status-code-form {
     height: 150px;
     width: 250px;
-    display: flex;
-    align-items: center;
+    @extend .centered-flex;
     justify-content: space-around;
 }
 .status-code-form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @extend .centered-flex-column;
     margin-top: 16px;
 }
 .status-code-form-text {
@@ -139,8 +129,7 @@
 .message-container-author-date-text {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    @extend .flex-column;
     justify-content: center;
 }
 .message-container-author-date {
@@ -156,8 +145,7 @@
 }
 
 .chat-list-body-input {
-    display: flex;
-    flex-direction: column;
+    @extend .flex-column;
     width: 75%;
     align-self: center;
     margin: 8px;
