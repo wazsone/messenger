@@ -7,44 +7,6 @@ enum METHODS {
     DELETE = "DELETE",
 }
 
-function queryStringify(data: object) {
-    if (typeof data !== "object") {
-        throw new Error("Data must be object");
-    }
-
-    function getObjQueryStringify(obj) {
-        const keys = Object.keys(obj);
-        return keys.reduce((result, key) => {
-            if (typeof obj[key] === "object") {
-                return `${result}[${key}]${getObjQueryStringify(obj[key])}`;
-            }
-            return `${result}[${key}]=${obj[key]}`;
-        }, "");
-    }
-
-    const keys = Object.keys(data);
-    return keys.reduce((result, key, index) => {
-        if (Array.isArray(data[key])) {
-            let str = "";
-            for (let i = 0; i < data[key].length; i++) {
-                str += `${key}[${i}]=${data[key][i]}${
-                    i < data[key].length - 1 ? "&" : ""
-                    }`;
-            }
-            return `${result}${str}${index < keys.length - 1 ? "&" : ""}`;
-        }
-        if (typeof data[key] === "object") {
-            const objQuery = getObjQueryStringify(data[key]);
-            return `${result}${key}${objQuery}${
-                index < keys.length - 1 ? "&" : ""
-                }`;
-        }
-        return `${result}${key}=${data[key]}${
-            index < keys.length - 1 ? "&" : ""
-            }`;
-    }, "");
-}
-
 // all request interfaces:
 // ICreateChatRequest | ICreateSignUpRequest | ...
 type requestData = ICreateChatRequest;
@@ -146,7 +108,7 @@ export class HTTP {
 
             xhr.open(
                 method,
-                isGet && !!data ? `${url}${queryStringify(data)}` : url,
+                isGet && !!data ? `${url}${Object.keys(data).map(key => key + '=' + data[key]).join('&')}` : url,
                 true
             );
 
