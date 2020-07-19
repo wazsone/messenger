@@ -60,7 +60,7 @@ function validate() {
 export function initUserSettingsValidation(confirmBtnName: string) {
     console.log("validationUserSettings.init()");
     userSettingsInputs = document
-        .getElementsByClassName("user-settings-form-content")[0]
+        .getElementById("user-settings-form-content")
         ?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
     userSettingsErrorLabels = document.getElementsByClassName(
         "user-settings-error-label"
