@@ -1,6 +1,9 @@
 import { HTTP } from "../modules/http";
 
-export const apiInstance = new HTTP('ya-praktikum.tech/api/v2');
-export const authAPIInstance = new HTTP('ya-praktikum.tech/api/v2/auth');
-export const chatAPIInstance = new HTTP('ya-praktikum.tech/api/v2/chats');
-export const usersAPIInstance = new HTTP('ya-praktikum.tech/api/v2/user');
+const baseHeaders = { ["Content-type"]: "application/json; charset=utf-8" };
+
+export const API_URL = "ya-praktikum.tech/api/v2";
+export const apiInstance = new HTTP({ baseUrl: API_URL, baseHeaders: baseHeaders });
+export const authAPIInstance = new HTTP({ baseUrl: `${API_URL}/auth`, baseHeaders: baseHeaders });
+export const chatAPIInstance = new HTTP({ baseUrl: `${API_URL}/chats`, baseHeaders: baseHeaders });
+export const usersAPIInstance = new HTTP({ baseUrl: `${API_URL}/user`, baseHeaders: baseHeaders });

@@ -24,10 +24,21 @@ interface IMethodsOptions extends Partial<ICommonOptions> {
     timeout?: number;
 }
 
+interface IHeaders {
+    [prop: string]: string;
+}
+
+interface IHTTPParams {
+    baseUrl?: string;
+    baseHeaders?: IHeaders;
+}
+
 export class HTTP {
     private baseUrl: string;
-    constructor(baseUrl: string) {
-        this.baseUrl = baseUrl ?? "";
+    private baseHeaders: IHeaders;
+    constructor(baseParams: IHTTPParams) {
+        this.baseUrl = baseParams.baseUrl ?? "";
+        this.baseHeaders = baseParams.baseHeaders ?? {};
     }
 
     get = (url: string, options: IMethodsOptions = {}) => {
@@ -43,16 +54,13 @@ export class HTTP {
     };
     post = (url: string, options: IMethodsOptions = {}) => {
         url = `${this.baseUrl}${url}`;
-        const headers = {
-            ["Content-type"]: "application/json; charset=utf-8",
-        };
         return this.request(
             url,
             {
                 ...options,
                 method: METHODS.POST,
                 headers: {
-                    ...headers,
+                    ...this.baseHeaders,
                     ...options.headers,
                 },
             },
@@ -61,16 +69,13 @@ export class HTTP {
     };
     put = (url: string, options: IMethodsOptions = {}) => {
         url = `${this.baseUrl}${url}`;
-        const headers = {
-            ["Content-type"]: "application/json; charset=utf-8",
-        };
         return this.request(
             url,
             {
                 ...options,
                 method: METHODS.PUT,
                 headers: {
-                    ...headers,
+                    ...this.baseHeaders,
                     ...options.headers,
                 },
             },
