@@ -4,9 +4,7 @@ import * as Handlebars from "handlebars";
 window.Handlebars = Handlebars;
 
 function getExpectedButton(props: IButtonProps) {
-    return `<div>
-    <button id="${props.idPrefix ?? ""}confirm-button" class="confirm-button padding-8px margin-bottom-8px">${props.name}</button>
-</div>`;
+    return `<button id="${props.idPrefix ?? ""}confirm-button" class="confirm-button padding-8px margin-bottom-8px">${props.name}</button>`;
 }
 
 describe("Button must be rendered", () => {
