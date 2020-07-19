@@ -12,6 +12,6 @@ export class Error extends Block<IProps> {
     }
 
     render() {
-        return Handlebars.compile(template)(this.props);
+        return window.Handlebars.compile(template)(this.props);
     }
 }

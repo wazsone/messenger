@@ -11,6 +11,8 @@ import { ChatScreen, IProps as IChatScreenProps } from "../components/ChatScreen
 import { renderDOM, handleLinkClick } from "../utils/renderUtils.js";
 import { Block } from "../modules/block.js";
 
+window.Handlebars = Handlebars;
+
 const pages: Block<any>[] = [
     new IndexPage({}),
     new Error(getErrorData("404")),

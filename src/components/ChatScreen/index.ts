@@ -33,6 +33,6 @@ export class ChatScreen extends Block<IProps> {
                 previews: this.props.previews,
             }).render(),
         };
-        return Handlebars.compile(template)(chatData);
+        return window.Handlebars.compile(template)(chatData);
     }
 }

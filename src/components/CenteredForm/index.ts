@@ -35,6 +35,6 @@ export class CenteredForm extends Block<IProps> {
             button: new Button({ name: confirmBtnName, idPrefix: formClassname }).render(),
             errorLabelIdPrefix: formClassname
         };
-        return Handlebars.compile(template)(formData);
+        return window.Handlebars.compile(template)(formData);
     }
 }

@@ -22,6 +22,6 @@ export class IndexPage extends Block<IProps> {
     }
 
     render() {
-        return Handlebars.compile(template)({});
+        return window.Handlebars.compile(template)({});
     }
 }

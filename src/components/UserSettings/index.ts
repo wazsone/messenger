@@ -29,6 +29,6 @@ export class UserSettings extends Block<IProps> {
             ...this.props,
             button: new Button({ name: confirmBtnName, idPrefix: confirmBtnName }).render(),
         };
-        return Handlebars.compile(template)(userSettingsData);
+        return window.Handlebars.compile(template)(userSettingsData);
     }
 }
