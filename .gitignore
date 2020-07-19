@@ -1,3 +1,4 @@
+*.js
 static/css
 static/js
 node_modules
