@@ -1,5 +1,3 @@
-import { ICreateChatRequest } from "../api/chat-api";
-
 enum METHODS {
     GET = "GET",
     POST = "POST",
@@ -9,7 +7,7 @@ enum METHODS {
 
 // all request interfaces:
 // ICreateChatRequest | ICreateSignUpRequest | ...
-type requestData = ICreateChatRequest;
+type requestData = object;
 
 interface ICommonOptions {
     headers: object;
