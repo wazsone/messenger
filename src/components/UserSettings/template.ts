@@ -1,6 +1,6 @@
 export const template = `<div class="form">
     <h3 class="title">User settings</h3>
-    <div class="user-settings-form-content">
+    <div id="user-settings-form-content" class="user-settings-form-content">
         <div class="user-settings-form-content-item">
             <img class="user-settings-avatar-img circle" />
             <a class="link user-settings-avatar-change-button" href="/upload-avatar">Change avatar</a>
