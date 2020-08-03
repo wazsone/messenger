@@ -1,12 +1,12 @@
-import { Route } from "./Route.js";
-import { Block } from "../modules/block.js";
+import { Route } from "./Route";
+import { Block } from "../modules/block";
 
 type Routes = Route<any> | null;
 export class Router {
     private static _instance: Router;
     static getInstance() {
         if (!Router._instance) {
-            return Router._instance = new Router();
+            return (Router._instance = new Router());
         }
         return Router._instance;
     }
@@ -44,11 +44,11 @@ export class Router {
     }
 
     start() {
-        window.onpopstate = (event => {
+        window.onpopstate = (event) => {
             console.log(event);
             console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
             this._onRoute(event.currentTarget.location.pathname);
-        });
+        };
 
         this._onRoute(window.location.pathname);
     }

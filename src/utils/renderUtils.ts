@@ -1,5 +1,5 @@
-import { Block } from "../modules/block.js";
-import { Router } from "../routing/Router.js";
+import { Block } from "../modules/block";
+import { Router } from "../routing/Router";
 
 export function renderDOM<T>(query: string, block: Block<T>) {
     const root = document.querySelector(query);

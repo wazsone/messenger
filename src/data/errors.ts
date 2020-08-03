@@ -1,5 +1,3 @@
-"use strict";
-
 export function getData(statusCode: string) {
     let errorMessage = "Something strange has happened ;)";
     if (statusCode === "404") {

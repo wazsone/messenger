@@ -1,6 +1,4 @@
-"use strict";
-
-import { registeredUsers } from "./testData.js";
+import { registeredUsers } from "./testData";
 
 export interface IUserLogin {
     login: string;
@@ -22,10 +20,7 @@ function validate() {
     console.log("validate.currentUser:");
     console.log(currentUser);
     for (const user of registeredUsers) {
-        if (
-            user.login === currentUser.login &&
-            user.password === currentUser.password
-        ) {
+        if (user.login === currentUser.login && user.password === currentUser.password) {
             console.log("validate, Success!");
             if (!SignInErrorLabel.classList.contains("hidden")) {
                 SignInErrorLabel.classList.add("hidden");
@@ -60,7 +55,5 @@ export function initSignInValidation(className: string) {
         };
     }
 
-    document
-        .getElementById(`${className}confirm-button`)
-        ?.addEventListener("click", validate);
+    document.getElementById(`${className}confirm-button`)?.addEventListener("click", validate);
 }

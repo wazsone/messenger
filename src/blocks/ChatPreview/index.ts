@@ -1,5 +1,5 @@
-import { Block } from "../../modules/block.js";
-import { template } from "./template.js";
+import { Block } from "../../modules/block";
+import { template } from "./template";
 
 export interface IChatPreviewItem {
     title: string;

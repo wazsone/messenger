@@ -1,12 +1,8 @@
-import { Block } from "../../modules/block.js";
-import { template } from "./template.js";
-import {
-    ChatPreview, IChatPreviewItem,
-} from "../../blocks/ChatPreview/index.js";
-import {
-    ChatMessages, IChatMessageItem,
-} from "../../blocks/ChatMessages/index.js";
-import { initChatValidation } from "../../pages/validation/chatScreen.js";
+import { Block } from "../../modules/block";
+import { template } from "./template";
+import { ChatPreview, IChatPreviewItem } from "../../blocks/ChatPreview/index";
+import { ChatMessages, IChatMessageItem } from "../../blocks/ChatMessages/index";
+import { initChatValidation } from "../../pages/validation/chatScreen";
 
 export interface IProps {
     logo: string;

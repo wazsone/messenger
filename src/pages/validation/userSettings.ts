@@ -1,6 +1,4 @@
-"use strict";
-
-import { ArrayUtils } from "../../utils/arrayUtils.js";
+import { ArrayUtils } from "../../utils/arrayUtils";
 
 let userSettingsInputs: NodeListOf<HTMLInputElement>;
 let userSettingsErrorLabels: HTMLCollectionOf<HTMLLabelElement>;
@@ -37,16 +35,13 @@ function validate() {
     console.log(userSettings);
     let hasEmptyInput = false;
     for (const key in userSettings) {
-        if (userSettings.hasOwnProperty(key) && userSettings[key] === "") {
+        if (userSettings[key] && userSettings[key] === "") {
             hasEmptyInput = true;
             break;
         }
     }
     const passwordErrorLabel = ArrayUtils.last(Array.from(userSettingsErrorLabels));
-    if (
-        !hasEmptyInput &&
-        userSettings.newPassword === userSettings.newPasswordAgain
-    ) {
+    if (!hasEmptyInput && userSettings.newPassword === userSettings.newPasswordAgain) {
         console.log("validate, Success!");
         if (passwordErrorLabel && !passwordErrorLabel.classList.contains("hidden")) {
             passwordErrorLabel.classList.add("hidden");
@@ -59,12 +54,8 @@ function validate() {
 
 export function initUserSettingsValidation(confirmBtnName: string) {
     console.log("validationUserSettings.init()");
-    userSettingsInputs = document
-        .getElementById("user-settings-form-content")
-        ?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
-    userSettingsErrorLabels = document.getElementsByClassName(
-        "user-settings-error-label"
-    ) as HTMLCollectionOf<HTMLLabelElement>;
+    userSettingsInputs = document.getElementById("user-settings-form-content")?.querySelectorAll("input") as NodeListOf<HTMLInputElement>;
+    userSettingsErrorLabels = document.getElementsByClassName("user-settings-error-label") as HTMLCollectionOf<HTMLLabelElement>;
     for (let i = 0; i < userSettingsInputs?.length; i++) {
         userSettingsInputs[i].onblur = () => {
             console.log(`${userSettingsInputs[i].name}.onblur()`);
@@ -80,7 +71,5 @@ export function initUserSettingsValidation(confirmBtnName: string) {
         };
     }
 
-    document
-        .getElementById(`${confirmBtnName}confirm-button`)
-        ?.addEventListener("click", validate);
+    document.getElementById(`${confirmBtnName}confirm-button`)?.addEventListener("click", validate);
 }

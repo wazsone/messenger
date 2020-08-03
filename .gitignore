@@ -1,6 +1,4 @@
-*.js
-static/css
-static/js
+/dist
 node_modules
 build
 npm-debug.log

@@ -2,11 +2,13 @@
     "name": "messenger",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
     "scripts": {
-        "start": "npm run build && node --experimental-modules ./static/js/server.js",
-        "build": "node-sass scss -o static/css && tsc --outDir ./static/js",
-        "test": "tsc && jest"
+        "start": "npm run build:prod && tsc ./server.ts --outDir ./dist && node ./dist/server.js",
+        "server:dev": "webpack-dev-server --mode=development",
+        "server:prod": "webpack-dev-server --mode=production",
+        "build:dev": "webpack --mode=development",
+        "build:prod": "webpack --mode=production",
+        "test": "jest"
     },
     "keywords": [],
     "author": "",
@@ -17,23 +19,33 @@
         "express": "^4.17.1",
         "handlebars": "^4.7.6"
     },
-    "type": "module",
     "devDependencies": {
         "@babel/core": "^7.10.5",
         "@babel/preset-env": "^7.10.4",
         "@babel/preset-typescript": "^7.10.4",
         "@types/jest": "^26.0.5",
-        "@types/node": "^14.0.23",
-        "@typescript-eslint/eslint-plugin": "^3.6.1",
-        "@typescript-eslint/parser": "^3.6.1",
+        "@types/node": "^14.0.27",
         "babel-jest": "^26.1.0",
-        "eslint": "^7.4.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^4.1.1",
         "eslint-config-airbnb-base": "^14.2.0",
         "eslint-plugin-import": "^2.22.0",
+        "file-loader": "^6.0.0",
+        "fsevents": "^2.1.3",
+        "html-webpack-plugin": "^4.3.0",
         "jest": "^26.1.0",
+        "mini-css-extract-plugin": "^0.9.0",
         "node-sass": "^4.14.1",
         "sass": "^1.26.10",
+        "sass-loader": "^9.0.2",
         "ts-jest": "^26.1.3",
-        "typescript": "^3.9.6"
+        "ts-loader": "^8.0.1",
+        "tsconfig-paths-webpack-plugin": "^3.3.0",
+        "typescript": "^3.9.7",
+        "watchpack-chokidar2": "^2.0.0",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0",
+        "webpack-merge": "^5.0.9"
     }
 }

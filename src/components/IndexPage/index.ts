@@ -1,6 +1,6 @@
-import { Block } from "../../modules/block.js";
+import { Block } from "../../modules/block";
 
-interface IProps { }
+interface IProps {}
 
 const template = `
 <div>Hello, my comrad!!!</div>

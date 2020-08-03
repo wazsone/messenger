@@ -1,13 +1,10 @@
-import { Block } from "../modules/block.js";
+import { Block } from "../modules/block";
 
 export class Route<T> {
     private _pathname: string;
     private _block: Block<T>;
 
-    constructor(
-        pathname: string,
-        block: Block<T>,
-    ) {
+    constructor(pathname: string, block: Block<T>) {
         this._pathname = pathname;
         this._block = block;
     }

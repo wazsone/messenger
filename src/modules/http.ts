@@ -1,4 +1,4 @@
-enum METHODS {
+export enum METHODS {
     GET = "GET",
     POST = "POST",
     PUT = "PUT",
@@ -91,11 +91,7 @@ export class HTTP {
             options.timeout
         );
     };
-    request = (
-        url: string,
-        options: IRequestOptions = {},
-        timeout: number = 5000
-    ) => {
+    request = (url: string, options: IRequestOptions = {}, timeout: number = 5000) => {
         url = `${this.baseUrl}${url}`;
         const { headers = {}, method, data } = options;
 
@@ -111,7 +107,11 @@ export class HTTP {
 
             xhr.open(
                 method,
-                isGet && !!data ? `${url}${Object.keys(data).map(key => key + '=' + data[key]).join('&')}` : url,
+                isGet && !!data
+                    ? `${url}${Object.keys(data)
+                          .map((key) => key + "=" + data[key])
+                          .join("&")}`
+                    : url,
                 true
             );
 

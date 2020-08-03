@@ -1,8 +1,6 @@
-"use strict";
-
-import { IProps } from "../components/CenteredForm/index.js";
-import { initSignUpValidation } from "../pages/validation/signUp.js";
-import { initSignInValidation } from "../pages/validation/signIn.js";
+import { IProps } from "../components/CenteredForm/index";
+import { initSignUpValidation } from "../pages/validation/signUp";
+import { initSignInValidation } from "../pages/validation/signIn";
 
 export function getSignInData(): IProps {
     return {
@@ -16,7 +14,7 @@ export function getSignInData(): IProps {
         confirmBtnName: "Sign In",
         linkTitle: "Don't have an account?",
         link: "/sign-up",
-        initValidation: initSignInValidation
+        initValidation: initSignInValidation,
     };
 }
 
@@ -34,6 +32,6 @@ export function getSignUpData(): IProps {
         confirmBtnName: "Sign Up",
         linkTitle: "Sign In",
         link: "/sign-in",
-        initValidation: initSignUpValidation
+        initValidation: initSignUpValidation,
     };
 }

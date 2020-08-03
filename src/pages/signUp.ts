@@ -1,6 +1,6 @@
-import { getSignUpData } from "../data/centeredForm.js";
-import { CenteredForm } from "../components/CenteredForm/index.js";
-import { renderDOM } from "../utils/renderUtils.js";
+import { getSignUpData } from "../data/centeredForm";
+import { CenteredForm } from "../components/CenteredForm/index";
+import { renderDOM } from "../utils/renderUtils";
 
 const signUpData = getSignUpData();
 const form = new CenteredForm(signUpData);

@@ -1,15 +1,19 @@
-import { Router } from "../routing/Router.js";
-import { getData as getErrorData } from "../data/errors.js";
-import { getSignInData, getSignUpData } from "../data/centeredForm.js";
-import { getData as getUserSettingsData } from "../data/userSettings.js";
-import { getData as getChatScreenData } from "../data/chatScreen.js";
-import { IndexPage } from "../components/IndexPage/index.js";
-import { Error, IProps as IErrorProps } from "../components/Error/index.js";
-import { CenteredForm, IProps as ICenteredFormProps } from "../components/CenteredForm/index.js";
-import { UserSettings, IProps as IUserSettingsProps } from "../components/UserSettings/index.js";
-import { ChatScreen, IProps as IChatScreenProps } from "../components/ChatScreen/index.js";
-import { renderDOM, handleLinkClick } from "../utils/renderUtils.js";
-import { Block } from "../modules/block.js";
+import { Router } from "../routing/Router";
+import { getData as getErrorData } from "../data/errors";
+import { getSignInData, getSignUpData } from "../data/centeredForm";
+import { getData as getUserSettingsData } from "../data/userSettings";
+import { getData as getChatScreenData } from "../data/chatScreen";
+import { IndexPage } from "../components/IndexPage/index";
+import { Error, IProps as IErrorProps } from "../components/Error/index";
+import { CenteredForm, IProps as ICenteredFormProps } from "../components/CenteredForm/index";
+import { UserSettings, IProps as IUserSettingsProps } from "../components/UserSettings/index";
+import { ChatScreen, IProps as IChatScreenProps } from "../components/ChatScreen/index";
+import { renderDOM, handleLinkClick } from "../utils/renderUtils";
+import { Block } from "../modules/block";
+import * as Handlebars from "handlebars";
+
+import "../../scss/common.scss";
+import "../../scss/styles.scss";
 
 window.Handlebars = Handlebars;
 
@@ -23,7 +27,7 @@ const pages: Block<any>[] = [
     new ChatScreen(getChatScreenData()),
 ];
 
-pages.forEach(page => renderDOM(".app", page));
+pages.forEach((page) => renderDOM(".app", page));
 
 const router = Router.getInstance();
 router

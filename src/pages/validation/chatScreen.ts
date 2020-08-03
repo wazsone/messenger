@@ -1,8 +1,4 @@
-"use strict";
-
-let chatInput = document.getElementsByClassName(
-    "chat-list-body-input-form"
-)[0] as HTMLInputElement;
+let chatInput = document.getElementsByClassName("chat-list-body-input-form")[0] as HTMLInputElement;
 
 function validate() {
     console.log("validate()");
@@ -16,10 +12,6 @@ function validate() {
 
 export function initChatValidation() {
     console.log("validationChatList.init()");
-    chatInput = document.getElementsByClassName(
-        "chat-list-body-input-form"
-    )[0] as HTMLInputElement;
-    document
-        .getElementsByClassName("chat-list-body-input-send-bottom")[0]
-        .addEventListener("click", validate);
+    chatInput = document.getElementsByClassName("chat-list-body-input-form")[0] as HTMLInputElement;
+    document.getElementsByClassName("chat-list-body-input-send-bottom")[0].addEventListener("click", validate);
 }

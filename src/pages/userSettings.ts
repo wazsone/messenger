@@ -1,6 +1,6 @@
-import { renderDOM } from "../utils/renderUtils.js";
-import { UserSettings } from "../components/UserSettings/index.js";
-import { getData } from "../data/userSettings.js";
+import { renderDOM } from "../utils/renderUtils";
+import { UserSettings } from "../components/UserSettings/index";
+import { getData } from "../data/userSettings";
 
 const userSettingsData = getData();
 const form = new UserSettings(userSettingsData);

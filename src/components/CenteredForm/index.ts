@@ -1,6 +1,6 @@
-import { Block } from "../../modules/block.js";
-import { template } from "./template.js";
-import { Button } from "../../blocks/Button/index.js";
+import { Block } from "../../modules/block";
+import { template } from "./template";
+import { Button } from "../../blocks/Button/index";
 
 interface ISignFormInput {
     name: string;
@@ -33,7 +33,7 @@ export class CenteredForm extends Block<IProps> {
         const formData = {
             ...this.props,
             button: new Button({ name: confirmBtnName, idPrefix: formClassname }).render(),
-            errorLabelIdPrefix: formClassname
+            errorLabelIdPrefix: formClassname,
         };
         return window.Handlebars.compile(template)(formData);
     }

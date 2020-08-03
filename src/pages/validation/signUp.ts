@@ -1,14 +1,12 @@
-"use strict";
-
 let SignUpInputs: NodeListOf<HTMLInputElement>;
 let SignUpErrorLabel: HTMLLabelElement;
 
 interface IUserSettings {
-    email: string,
-    login: string,
-    password: string,
-    passwordAgain: string,
-};
+    email: string;
+    login: string;
+    password: string;
+    passwordAgain: string;
+}
 
 function validate() {
     console.log("validate()");
@@ -28,16 +26,13 @@ function validate() {
     console.log(userSettings);
     let hasEmptyInput = false;
     for (const key in userSettings) {
-        if (userSettings.hasOwnProperty(key) && userSettings[key] === "") {
+        if (userSettings[key] && userSettings[key] === "") {
             hasEmptyInput = true;
             break;
         }
     }
 
-    if (
-        !hasEmptyInput &&
-        userSettings.password === userSettings.passwordAgain
-    ) {
+    if (!hasEmptyInput && userSettings.password === userSettings.passwordAgain) {
         console.log("validate, Success!");
         if (!SignUpErrorLabel.classList.contains("hidden")) {
             SignUpErrorLabel.classList.add("hidden");
@@ -72,8 +67,5 @@ export function initSignUpValidation(className: string) {
         };
     }
 
-    document
-        .getElementById(`${className}confirm-button`)
-        ?.addEventListener("click", validate);
+    document.getElementById(`${className}confirm-button`)?.addEventListener("click", validate);
 }
-

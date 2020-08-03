@@ -1,7 +1,7 @@
-import { Block } from "../../modules/block.js";
-import { template } from "./template.js";
-import { Button } from "../../blocks/Button/index.js";
-import { initUserSettingsValidation } from "../../pages/validation/userSettings.js";
+import { Block } from "../../modules/block";
+import { template } from "./template";
+import { Button } from "../../blocks/Button/index";
+import { initUserSettingsValidation } from "../../pages/validation/userSettings";
 
 interface IUserSettingsInput {
     name: string;
