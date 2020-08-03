@@ -1,16 +1,21 @@
 {
     "env": {
+        "node": true,
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
+    "plugins": ["prettier", "jest"],
+    "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:jest/recommended"],
     "rules": {
+        "no-unused-vars": "warn",
+        "prettier/prettier": "warn",
+        "semi": ["warn", "always"],
+        "quotes": ["warn", "double"]
     }
 }
