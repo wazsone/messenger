@@ -6,7 +6,7 @@ const dirname = path.resolve();
 
 app.use(express.static(path.join(dirname, "/dist")));
 
-const PORT = 4000;
-app.listen(PORT, function () {
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, "0.0.0.0", function () {
     console.log(`Messenger is listening on port ${PORT}!`);
 });
