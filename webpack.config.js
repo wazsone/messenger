@@ -81,6 +81,7 @@ module.exports = {
         new webpack.HashedModuleIdsPlugin(),
     ],
     devServer: {
+        historyApiFallback: true,
         contentBase: false,
         compress: true,
         inline: true,

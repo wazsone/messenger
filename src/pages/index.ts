@@ -37,8 +37,13 @@ router
     .use<ICenteredFormProps>("/sign-in", pages[3])
     .use<ICenteredFormProps>("/sign-up", pages[4])
     .use<IUserSettingsProps>("/user-settings", pages[5])
-    .use<IChatScreenProps>("/chat-screen", pages[6])
-    .start();
+    .use<IChatScreenProps>("/chat-screen", pages[6]);
+
+if (!router.getRoute(window.location.pathname)) {
+    router.go("/error/404");
+} else {
+    router.start();
+}
 
 const links = document.querySelectorAll("a") ?? [];
 for (const link of links) {
