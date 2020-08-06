@@ -1,9 +1,9 @@
 FROM node:12 
 
-COPY . ./
+COPY . /
 
-RUN npm ci && npm install typescript -g
+RUN npm ci --production
 
 EXPOSE 4000
 
-CMD npm run build:prod && tsc /server.ts --outDir /dist && node /dist/server.js
+CMD node /dist/server.js
