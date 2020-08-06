@@ -12,8 +12,8 @@ import { renderDOM, handleLinkClick } from "../utils/renderUtils";
 import { Block } from "../modules/block";
 import * as Handlebars from "handlebars";
 
-import "../../scss/common.scss";
-import "../../scss/styles.scss";
+import "../scss/common.scss";
+import "../scss/styles.scss";
 
 window.Handlebars = Handlebars;
 
