@@ -40,18 +40,20 @@ export class HTTP {
     }
 
     get = (url: string, options: IMethodsOptions = {}) => {
-        url = `${this.baseUrl}${url}`;
         return this.request(
             url,
             {
                 ...options,
                 method: METHODS.GET,
+                headers: {
+                    ...this.baseHeaders,
+                    ...options.headers,
+                },
             },
             options.timeout
         );
     };
     post = (url: string, options: IMethodsOptions = {}) => {
-        url = `${this.baseUrl}${url}`;
         return this.request(
             url,
             {
@@ -66,7 +68,6 @@ export class HTTP {
         );
     };
     put = (url: string, options: IMethodsOptions = {}) => {
-        url = `${this.baseUrl}${url}`;
         return this.request(
             url,
             {
@@ -81,12 +82,15 @@ export class HTTP {
         );
     };
     delete = (url: string, options: IMethodsOptions = {}) => {
-        url = `${this.baseUrl}${url}`;
         return this.request(
             url,
             {
                 ...options,
                 method: METHODS.DELETE,
+                headers: {
+                    ...this.baseHeaders,
+                    ...options.headers,
+                },
             },
             options.timeout
         );
@@ -102,18 +106,18 @@ export class HTTP {
             }
 
             const xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
             const isGet = method === METHODS.GET;
             const isDelete = method === METHODS.DELETE;
 
-            xhr.open(
-                method,
+            const preparedUrl =
                 isGet && !!data
                     ? `${url}${Object.keys(data)
-                          .map((key) => key + "=" + data[key])
+                          .map((key) => `${key}=${data[key]})`)
                           .join("&")}`
-                    : url,
-                true
-            );
+                    : url;
+
+            xhr.open(method, preparedUrl, true);
 
             Object.keys(headers).forEach((key) => {
                 xhr.setRequestHeader(key, headers[key]);
