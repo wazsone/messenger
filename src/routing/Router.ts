@@ -61,6 +61,7 @@ export class Router {
     back() {
         if (this._routes.length > 1) {
             this._history.back();
+            this._onRoute(window.location.pathname);
         }
     }
 
