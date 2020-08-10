@@ -1,4 +1,5 @@
-import { registeredUsers } from "./testData";
+// import { registeredUsers } from "./testData";
+import { authAPIInstance } from "../../api/api-instances";
 
 export interface IUserLogin {
     login: string;
@@ -19,17 +20,32 @@ function validate() {
     }
     console.log("validate.currentUser:");
     console.log(currentUser);
-    for (const user of registeredUsers) {
-        if (user.login === currentUser.login && user.password === currentUser.password) {
-            console.log("validate, Success!");
+    authAPIInstance
+        .post("/signin", {
+            data: currentUser,
+        })
+        .then((res: XMLHttpRequest) => {
+            console.log(res.response);
             if (!SignInErrorLabel.classList.contains("hidden")) {
                 SignInErrorLabel.classList.add("hidden");
             }
-            return;
-        }
-    }
-    console.log("validate, Failed!");
-    SignInErrorLabel.classList.remove("hidden");
+        })
+        .catch((e) => {
+            console.log("error: ", e);
+            console.log("validate, Failed!");
+            SignInErrorLabel.classList.remove("hidden");
+        });
+    // for (const user of registeredUsers) {
+    //     if (user.login === currentUser.login && user.password === currentUser.password) {
+    //         console.log("validate, Success!");
+    //         if (!SignInErrorLabel.classList.contains("hidden")) {
+    //             SignInErrorLabel.classList.add("hidden");
+    //         }
+    //         return;
+    //     }
+    // }
+    // console.log("validate, Failed!");
+    // SignInErrorLabel.classList.remove("hidden");
 }
 
 export function initSignInValidation(className: string) {

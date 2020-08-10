@@ -14,6 +14,7 @@ import * as Handlebars from "handlebars";
 
 import "../scss/common.scss";
 import "../scss/styles.scss";
+// import { authAPIInstance } from "../api/api-instances";
 
 window.Handlebars = Handlebars;
 
@@ -49,3 +50,30 @@ const links = document.querySelectorAll("a") ?? [];
 for (const link of links) {
     link.onclick = handleLinkClick;
 }
+
+// https://ya-praktikum.tech/api/v2/auth/user
+// authAPIInstance
+//     .post("/signup", {
+//         data: {
+//             first_name: "my-first-name-2",
+//             second_name: "my-second-name-2",
+//             login: "my-login-2",
+//             email: "my-email-2@email.com",
+//             password: "password1",
+//             phone: "8-777-777-77-77",
+//         },
+//     })
+//     .then((json: XMLHttpRequest) => console.log(json.response))
+//     .catch((e) => console.log(`error: ${e}`));
+
+// setTimeout(() => {
+//     authAPIInstance
+//         .get("/user")
+//         .then((json: XMLHttpRequest) => console.log(json.response))
+//         .catch((e) => console.log(`error: ${e}`));
+// }, 2000);
+
+// usersAPIInstance
+//     .get("/532")
+//     .then((json: XMLHttpRequest) => console.log(json.response))
+//     .catch((e) => console.log(e));

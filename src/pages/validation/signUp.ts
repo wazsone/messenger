@@ -1,7 +1,12 @@
+import { authAPIInstance } from "../../api/api-instances";
+
 let SignUpInputs: NodeListOf<HTMLInputElement>;
 let SignUpErrorLabel: HTMLLabelElement;
 
 interface IUserSettings {
+    first_name: string;
+    second_name: string;
+    phone: string;
     email: string;
     login: string;
     password: string;
@@ -11,6 +16,9 @@ interface IUserSettings {
 function validate() {
     console.log("validate()");
     const userSettings: IUserSettings = {
+        first_name: "",
+        second_name: "",
+        phone: "",
         email: "",
         login: "",
         password: "",
@@ -37,6 +45,18 @@ function validate() {
         if (!SignUpErrorLabel.classList.contains("hidden")) {
             SignUpErrorLabel.classList.add("hidden");
         }
+        delete userSettings.passwordAgain;
+        console.log(userSettings as Omit<IUserSettings, "passwordAgain">);
+        authAPIInstance
+            .post("/signup", {
+                data: userSettings,
+            })
+            .then((res: XMLHttpRequest) => {
+                console.log(res.response);
+            })
+            .catch((e) => {
+                console.log("error: ", e);
+            });
         return;
     }
 

@@ -136,7 +136,9 @@ export class HTTP {
             if (isGet || isDelete || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                const jsonData = JSON.stringify(data);
+                console.log("jsonData: ", jsonData);
+                xhr.send(jsonData);
             }
         });
     };

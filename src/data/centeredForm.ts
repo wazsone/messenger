@@ -23,6 +23,9 @@ export function getSignUpData(): IProps {
         formClassname: "sign-up-form",
         formLabel: "Sign Up",
         inputs: [
+            { name: "first_name", placeholder: "First name" },
+            { name: "second_name", placeholder: "Second name" },
+            { name: "phone", placeholder: "Phone" },
             { name: "email", placeholder: "E-mail" },
             { name: "login", placeholder: "Login" },
             { name: "password", placeholder: "Password" },
